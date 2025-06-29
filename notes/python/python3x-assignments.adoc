@@ -1,0 +1,223 @@
+= Advanced Python Programming - 1 Questions
+:toc: right
+:toclevels:5
+:sectnums:
+
+== Assignment: Operators and Logic
+
+1. Create a program that has two numbers (e.g., 10 and 5) and prints their sum, difference, product, and quotient.
+
+2. Define a variable for age (e.g., age = 25) and print whether the person is a minor, an adult, or a senior citizen using if-else statements.
+
+3. Create a variable with a number (e.g., number = 7) and print whether it is even or odd.
+
+4. Define a temperature in Celsius (e.g., celsius = 30) and convert it to Fahrenheit using the formula: F = (C \* 9/5) + 32.
+
+5. Create three number variables (e.g., a = 4, b = 9, c = 2) and print the largest number among them.
+
+6. Define a string variable (e.g., text = "Python") and print whether the length of the string is greater than 5 or not.
+
+7. Define a number (e.g., num = 15) and check if it is a multiple of both 3 and 5.
+
+8. Define two numbers (e.g., x = 10, y = 20). Swap their values using a third variable and then swap them again without using a third variable.
+
+9. Create a simple calculator using three variables: num1 = 12, num2 = 4, and operator = '\*'. Print the result based on the operator.
+
+10. Define price = 25 and quantity = 5. Calculate the total cost. If the total is more than 100, apply a 10% discount and print the final amount.
+
+##########
+
+== Assignment: Loops
+
+*Question 1:* *Print Numbers from 1 to 10*
+Write a `for` loop to print numbers from 1 to 10.
+
+*Question 2:* *Print Only Even Numbers from 1 to 20*
+Use a loop to print only even numbers between 1 and 20.
+
+*Question 3:* *Print Multiplication Table of 5*
+Write a loop that prints the multiplication table of 5 from 5 x 1 to 5 x 10.
+
+*Question 4:* *Sum of First 10 Natural Numbers*
+Use a loop to calculate and print the sum of numbers from 1 to 10.
+
+*Question 5:* *Countdown from 5 to 1*
+Use a `while` loop to count down from 5 to 1 and then print "Blast off!".
+
+== Assignment: Functions
+
+*Question 1:*
+
+*Print a Welcome Message*
+Write a function named `greet()` that prints "Welcome to Python programming!".
+Call the function.
+
+*Question 2:*
+
+*Print Current Year*
+Write a function named `current_year()` that prints the year 2025.
+Call the function.
+
+*Question 3:*
+
+*Print Multiplication Table of 5*
+Write a function named `print_table()` that prints the multiplication table of 5 (from 1 to 10).
+Call the function.
+
+
+*Question 4:*
+
+*Add Two Numbers*
+Write a function named `add_numbers(a, b)` that prints the sum of two numbers.
+Call the function with two numbers like `add_numbers(5, 10)`.
+
+*Question 5:*
+
+*Greet a User by Name*
+Write a function named `greet_user(name)` that prints "Hello, <name>!".
+Call the function with your name as input.
+
+*Question 6:*
+
+*Check if a Number is Even or Odd*
+Write a function named `check_even_odd(num)` that prints whether the number is even or odd.
+Call the function with different numbers.
+
+*Question 7:*
+
+*Display a Line of Stars*
+Write a function named `print_stars()` that prints a line of 10 stars (**********).
+Call the function.
+
+*Question 8:*
+
+*Calculate Area of a Rectangle*
+Write a function named `area_rectangle(length, width)` that calculates and prints the area of a rectangle.
+Call the function with values like `area_rectangle(5, 3)`.
+
+---
+
+== Assignment: List
+
+*Assignment 1: Fruit Basket*
+
+*Objective:* Practice `append()`, `insert()`, and `remove()` methods.
+
+*Instructions:*
+
+1. Create a list called `basket` with 3 fruits.
+2. Add a new fruit to the end of the list.
+3. Insert a fruit at the second position.
+4. Remove one fruit by name.
+5. Print the updated list.
+
+*Assignment 2: Favorite Numbers*
+
+*Objective:* Use indexing, length, and loops.
+
+*Instructions:*
+
+1. Create a list `numbers` with 5 of your favorite numbers.
+2. Print the first and last number using indexing.
+3. Print the total number of items using `len()`.
+4. Use a `for` loop to print each number.
+
+*Assignment 3: List Cleanup and Sorting*
+
+*Objective:* Use `pop()`, `sort()`, `reverse()`, and `clear()`.
+
+*Instructions:*
+
+1. Create a list `cities` with 6 city names.
+2. Remove the last city using `pop()`.
+3. Sort the list alphabetically.
+4. Reverse the order of the list.
+5. Clear the entire list.
+6. Print the list after each step to see the changes.
+
+== Assignment: Set
+
+*1: Create a Set*
+
+Create a set of 5 fruits. Print the set.
+
+*2: Add Items to Set*
+
+Start with a set of 3 colors. Add 2 more colors using the `add()` method. Print the final set.
+
+*3: Remove Item from Set*
+
+Create a set of cities. Remove one city using the `remove()` method. Then try removing a city using `discard()` that does not exist.
+
+*4: Check Membership*
+
+Create a set of programming languages. Check if `"Python"` is in the set and print the result.
+
+*5: Length of Set*
+
+Create a set of 7 unique numbers. Print the total number of elements using `len()`.
+
+*6: Loop Through Set*
+
+Create a set of 4 animals. Use a loop to print each animal on a new line.
+
+*7: Set Union*
+
+Create two sets:
+- `set1 = {"apple", "banana"}`
+- `set2 = {"banana", "cherry"}`
+Find and print the union of both sets.
+
+*8: Set Intersection*
+
+Using the same `set1` and `set2`, print the common items using `intersection()`.
+
+*9: Set Difference*
+
+Find and print items that are in `set1` but not in `set2` using `difference()`.
+
+*10: Convert List to Set*
+
+Create a list with some duplicate names. Convert it into a set to remove duplicates and print the result.
+
+== Assignment: Tuple
+
+*1: Create a Tuple*
+
+Create a tuple with 5 country names and print it.
+
+*2: Access Elements*
+
+Create a tuple of 4 colors. Print the first and last elements using index.
+
+*3: Loop Through Tuple*
+
+Create a tuple of 5 subjects. Use a loop to print each subject.
+
+*4: Tuple Slicing*
+
+Create a tuple of 6 even numbers. Print a slice from index 1 to 4.
+
+*5: Check Item Exists*
+
+Create a tuple of mobile brands. Check if `"Samsung"` is present in the tuple.
+
+*6: Tuple Length*
+
+Create a tuple of days of the week. Print the length using `len()`.
+
+*7: Count Occurrences*
+
+Create a tuple with repeated numbers. Use `count()` to find how many times `5` appears.
+
+*8: Find Index*
+
+Create a tuple of city names. Use `index()` to find the position of `"Delhi"`.
+
+*9: Tuple Concatenation*
+
+Create two tuples — one with vowels and another with consonants. Concatenate and print the result.
+
+*10: Convert List to Tuple*
+
+Create a list of 4 book titles. Convert the list into a tuple and print it.

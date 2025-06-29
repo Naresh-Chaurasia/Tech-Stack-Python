@@ -1,0 +1,9 @@
+== Batch Progress
+
+
+=== Automation Architect
+
+* Tools API
+* JUnit
+* video-game-db-api - setup done
+* DevOps Concepts

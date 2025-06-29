@@ -1,0 +1,342 @@
+=  Python Error Handling and Files
+:toc: right
+:toclevels:5
+:sectnums:
+
+----
+a = 0 # reading data from excel
+b = 20
+
+list = [1, 2, 3, 4, 5]
+
+try:
+    print(list[5])
+    c = b / a
+    print(c)
+except ZeroDivisionError as e:
+    print("Inside except...")
+    print(e)
+except IndexError as e:
+    print("Index out of range...")
+    print(e)
+except Exception as e:
+    print("Exception...")
+    print(e)
+
+
+print("successful division...")
+----
+
+
+== Python Error Handling
+
+Python provides various mechanisms to handle errors and exceptions gracefully.
+
+=== Types of Errors
+
+* *Syntax Errors*: Occur when the Python interpreter cannot understand the code.
+
+[source, python]
+----
+print("Hello"  # SyntaxError: unexpected EOF while parsing
+----
+
+* *Runtime Errors (Exceptions)*: Occur while the program is running.
+
+[source, python]
+----
+result = 10 / 0  # ZeroDivisionError: division by zero
+----
+
+=== Handling Exceptions using `try-except`
+
+* The `try` block contains code that may raise an exception.
+* The `except` block handles the exception and prevents program crashes.
+
+[source, python]
+----
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+----
+
+=== Handling Multiple Exceptions
+
+* Use multiple `except` blocks to catch different exceptions.
+
+[source, python]
+----
+try:
+    num = int("abc")
+except ValueError:
+    print("Invalid number format!")
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+----
+
+=== Using `finally`
+
+* The `finally` block *always executes*, even if an exception occurs.
+
+[source, python]
+----
+try:
+    file = open("test.txt", "r")
+    content = file.read()
+except FileNotFoundError:
+    print("File not found!")
+finally:
+    print("Closing file operation")
+----
+
+=== Raising Exceptions using `raise`
+
+* Use `raise` to generate custom exceptions.
+
+[source, python]
+----
+def check_age(age):
+    if age < 18:
+        raise ValueError("Age must be 18 or older.")
+    print("Access granted!")
+
+check_age(16)  # Raises ValueError
+----
+
+=== Using `else` with `try-except`
+
+* The `else` block runs if no exception occurs.
+
+[source, python]
+----
+try:
+    num = int("100")
+except ValueError:
+    print("Invalid number format!")
+else:
+    print("Valid number:", num)
+----
+
+##############################################
+
+---
+
+=== Hierarchy
+
+Here is a *complete detailed hierarchy* of Python built-in exceptions:
+
+```
+BaseException
+│
+├── Exception
+│   │
+│   ├── ArithmeticError
+│   │   ├── FloatingPointError
+│   │   ├── OverflowError
+│   │   ├── ZeroDivisionError
+│   │
+│   ├── AssertionError
+│   │
+│   ├── AttributeError
+│   │
+│   ├── BufferError
+│   │
+│   ├── EOFError
+│   │
+│   ├── ImportError
+│   │   ├── ModuleNotFoundError
+│   │
+│   ├── LookupError
+│   │   ├── IndexError
+│   │   ├── KeyError
+│   │
+│   ├── MemoryError
+│   │
+│   ├── NameError
+│   │   ├── UnboundLocalError
+│   │
+│   ├── OSError
+│   │   ├── BlockingIOError
+│   │   ├── ChildProcessError
+│   │   ├── ConnectionError
+│   │   │   ├── BrokenPipeError
+│   │   │   ├── ConnectionAbortedError
+│   │   │   ├── ConnectionRefusedError
+│   │   │   ├── ConnectionResetError
+│   │   ├── FileExistsError
+│   │   ├── FileNotFoundError
+│   │   ├── InterruptedError
+│   │   ├── IsADirectoryError
+│   │   ├── NotADirectoryError
+│   │   ├── PermissionError
+│   │   ├── ProcessLookupError
+│   │   ├── TimeoutError
+│   │
+│   ├── ReferenceError
+│   │
+│   ├── RuntimeError
+│   │   ├── NotImplementedError
+│   │   ├── RecursionError
+│   │
+│   ├── StopIteration
+│   │
+│   ├── StopAsyncIteration
+│   │
+│   ├── SyntaxError
+│   │   ├── IndentationError
+│   │   │   ├── TabError
+│   │
+│   ├── SystemError
+│   │
+│   ├── TypeError
+│   │
+│   ├── ValueError
+│   │   ├── UnicodeError
+│   │   │   ├── UnicodeDecodeError
+│   │   │   ├── UnicodeEncodeError
+│   │   │   ├── UnicodeTranslateError
+│   │
+│   ├── Warning
+│       ├── DeprecationWarning
+│       ├── PendingDeprecationWarning
+│       ├── RuntimeWarning
+│       ├── SyntaxWarning
+│       ├── UserWarning
+│       ├── FutureWarning
+│       ├── ImportWarning
+│       ├── UnicodeWarning
+│       ├── BytesWarning
+│       ├── ResourceWarning
+│
+├── GeneratorExit
+│
+├── KeyboardInterrupt
+│
+└── SystemExit
+```
+
+This is the *complete hierarchy of Python built-in exceptions*.
+Let me know if you need further explanations! 🚀
+
+##############################################
+
+=== Conclusion
+
+* Exception handling prevents programs from crashing due to unexpected errors.
+* Use `try-except`, `finally`, and `raise` effectively to ensure robust code execution.
+
+##############################################
+
+== File Handling
+
+File handling in Python allows you to read, write, and manipulate files. Python provides built-in functions for working with files.
+
+=== Opening a File
+
+To open a file, use the `open()` function.
+
+[source, python]
+----
+file = open("example.txt", "r")  # Opens the file in read mode
+----
+
+Modes available for opening files:
+
+* `"r"` - Read (default)
+* `"w"` - Write (creates a new file if it doesn't exist)
+* `"a"` - Append
+* `"x"` - Create (fails if file exists)
+* `"b"` - Binary mode
+* `"t"` - Text mode (default)
+
+=== Reading a File
+
+You can read a file using `read()`, `readline()`, or `readlines()`.
+
+[source, python]
+----
+file = open("example.txt", "r")
+content = file.read()  # Reads the entire file
+print(content)
+file.close()
+----
+
+=== Writing to a File
+
+Use `"w"` mode to write data to a file (overwrites existing content).
+
+[source, python]
+----
+file = open("example.txt", "w")
+file.write("Hello, world!")
+file.close()
+----
+
+To append data instead of overwriting, use `"a"` mode.
+
+[source, python]
+----
+file = open("example.txt", "a")
+file.write("\nAppending a new line.")
+file.close()
+----
+
+=== Using `with` Statement
+
+Using `with` ensures the file is properly closed after operations.
+
+[source, python]
+----
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)  # File is automatically closed
+----
+
+=== Working with Binary Files
+
+For binary files like images or videos, use `"rb"` or `"wb"` mode.
+
+[source, python]
+----
+with open("image.jpg", "rb") as file:
+    data = file.read()
+----
+
+=== Checking if File Exists
+
+Use the `os` module to check if a file exists.
+
+[source, python]
+----
+import os
+
+if os.path.exists("example.txt"):
+    print("File exists")
+else:
+    print("File not found")
+----
+
+=== Deleting a File
+
+Use the `os` module to delete a file.
+
+[source, python]
+----
+import os
+
+if os.path.exists("example.txt"):
+    os.remove("example.txt")
+    print("File deleted")
+else:
+    print("File does not exist")
+----
+
+=== Summary
+
+* Python provides `open()` to work with files.
+* Always close the file after use or use `with` statement.
+* Choose the correct mode (`r`, `w`, `a`, `b`, `t`) based on your requirement.
+* Use the `os` module to check for file existence and delete files.
+
+This concludes the introduction to Python file handling.

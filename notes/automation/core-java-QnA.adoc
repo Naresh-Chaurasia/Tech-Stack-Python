@@ -1,0 +1,754 @@
+= Core Java - QnA
+:toc: right
+:toclevels: 5
+:sectnums: 5
+
+== Question Set (JDK, JRE, ENV Variables)
+
+1. *What does the PATH environment variable do?*
+- A) Specifies the maximum memory allocation for the operating system.
+- B) Stores the location of executables to be used from the command line.
+- C) Defines the network configuration settings.
+- D) Sets the default file permissions.
+
+2. *What is the primary purpose of the CLASSPATH environment variable in Java?*
+- A) To specify the maximum heap size for Java applications.
+- B) To locate the Java Development Kit (JDK).
+- C) To locate the classes and libraries required by Java programs.
+- D) To store the user’s personal settings for Java applications.
+
+3. *Which of the following statements about bytecode is correct?*
+- A) Bytecode is the machine code for the Java Virtual Machine (JVM).
+- B) Bytecode is the source code written by the programmer.
+- C) Bytecode is the binary code executed directly by the operating system.
+- D) Bytecode is used only for JavaScript programs.
+
+4. *What is included in the Java Development Kit (JDK)?*
+- A) Only the Java Runtime Environment (JRE).
+- B) The JRE, development tools, and libraries for Java development.
+- C) Only the Java Virtual Machine (JVM).
+- D) Only the Java API documentation.
+
+5. *What is the role of the Java Runtime Environment (JRE)?*
+- A) To compile Java source code into bytecode.
+- B) To provide libraries, Java Virtual Machine (JVM), and other components to run Java applications.
+- C) To develop and debug Java applications.
+- D) To edit Java source code files.
+
+##############################################
+
+---
+
+
+== Question Set (Data Types, Variables)
+
+
+*Question 1: Java Data Types*
+
+*Which of the following is not a primitive data type in Java?*
+
+A. int
+
+B. boolean
+
+C. String
+
+D. char
+
+.Click Here For Answer
+[%collapsible]
+====
+*The answer is* `C`
+====
+
+*Question 2: Unicode in Java*
+
+*What is the range of Unicode values in Java?*
+
+A. 0 to 65535
+
+B. 0 to 32767
+
+C. 0 to 2147483647
+
+D. 0 to 1114111
+
+.Click Here For Answer
+[%collapsible]
+====
+*The answer is* `A`
+====
+
+*Question 3: Variables in Java*
+
+*Which of the following statements is correct about variable declaration and initialization in Java?*
+
+A. int a; a = 5;
+
+B. int a = 5;
+
+C. a = 5; int a;
+
+D. Both A and B
+
+.Click Here For Answer
+[%collapsible]
+====
+*The answer is* `D`
+====
+
+*Question 4: Operators in Java*
+
+*What will be the output of the following code?*
+
+[source,java]
+----
+
+public class p2.Main {
+    public static void main(String[] args) {
+    int a = 10;
+    int b = 5;
+    System.out.println(a / b);
+    }
+}
+
+----
+
+A. 0
+
+B. 2
+
+C. 2.0
+
+D. 10.0
+
+.Click Here For Answer
+[%collapsible]
+====
+*The answer is* `C`
+====
+
+
+*Question 5: Java Data Types*
+
+*Which of the following statements is true about the `char` data type in Java?*
+
+A. It is a 16-bit signed integer.
+
+B. It is a 32-bit unsigned integer.
+
+C. It is a 16-bit unsigned integer.
+
+D. It is a 32-bit signed integer.
+
+.Click Here For Answer
+[%collapsible]
+====
+*The answer is* `C`
+====
+
+##############################################
+
+== Coding Exercise: Data Types and Variables
+
+*Objective:*
+
+The goal of this exercise is to test your understanding of Java data types, including both primitive and reference types, and your ability to work with variables.
+
+*Problem Statement:*
+
+1. *Primitive Data Types*
+- Create a Java class named `PrimitiveDataTypes`.
+- Declare variables of the following primitive data types: `int`, `double`, `char`, and `boolean`.
+- Assign appropriate values to each variable.
+- Write a method `displayPrimitives()` that prints the values of these variables to the console.
+
+2. *Reference Data Types*
+- Create a Java class named `ReferenceDataTypes`.
+- Declare variables of the following reference data types: `String`, `Array`, and a custom class type `Person` (which you will define).
+- Assign appropriate values to each variable.
+- Write a method `displayReferences()` that prints the values of these variables to the console.
+
+3. *Custom Class: Person*
+- Create a custom class named `Person` with the following attributes: `name` (String), `age` (int).
+- Include a constructor to initialize these attributes.
+- Override the `toString()` method to provide a string representation of a `Person` object.
+
+*Instructions:*
+
+*Task:*
+
+1. Implement the classes `PrimitiveDataTypes`, `Person`, and `ReferenceDataTypes` as described above.
+2. Compile and run the `PrimitiveDataTypes` and `ReferenceDataTypes` classes to ensure they work as expected.
+3. Ensure that all the values are printed correctly to the console.
+
+---
+
+This exercise will help you demonstrate your understanding of both primitive and reference data types in Java, along with basic object-oriented programming concepts.
+
+
+##############################################
+
+---
+
+== Coding Exercise: Conditional and Looping Statements
+
+*Objective*
+
+The goal of this exercise is to test your understanding of Java conditional statements (`if-else`, `switch`) and looping statements (`for`, `while`, `do-while`).
+
+*Problem Statement:*
+
+1. *Conditional Statements*
+
+- Create a Java class named `ConditionalStatements`.
+- Implement a method `checkNumber(int number)` that:
+- Uses an `if-else` statement to check if the number is positive, negative, or zero and prints the result.
+- Uses a `switch` statement to check if the number is 1, 2, 3, or another value and prints a corresponding message.
+
+2. *Looping Statements*
+
+- Create a Java class named `LoopingStatements`.
+- Implement the following methods:
+- `printNumbersForLoop(int n)`: Uses a `for` loop to print numbers from 1 to `n`.
+- `printNumbersWhileLoop(int n)`: Uses a `while` loop to print numbers from 1 to `n`.
+- `printNumbersDoWhileLoop(int n)`: Uses a `do-while` loop to print numbers from 1 to `n`.
+
+
+*Task:*
+
+1. Implement the classes `ConditionalStatements` and `LoopingStatements` as described above.
+2. Compile and run the `ConditionalStatements` and `LoopingStatements` classes to ensure they work as expected.
+3. Ensure that the appropriate messages and numbers are printed to the console.
+
+---
+
+This exercise will help you demonstrate your understanding of conditional and looping statements in Java.
+
+##############################################
+
+== Core Java Programming Exercise
+
+* Write a program to find the sum of all even numbers between 1 and 100.  
+
+* *Logic:* Use a loop to iterate through numbers from 1 to 100. Check if a number is even using the modulus operator (`number % 2 == 0`). Add all such numbers.  
+
+* *Example:* The sum of even numbers from 1 to 10 is 2 + 4 + 6 + 8 + 10 = 30.  
+
+---
+
+* Write a program to check if a given number is prime or not.  
+
+* *Logic:* A number is prime if it is greater than 1 and has no divisors other than 1 and itself. Check divisibility using a loop from 2 to `number/2`.  
+
+* *Example:* 5 is a prime number because it is divisible only by 1 and 5.  
+
+---
+
+* Write a program to print the Fibonacci series up to a given number.  
+
+* *Logic:* Fibonacci series starts with 0 and 1, and each subsequent number is the sum of the previous two. Use a loop to generate the series.  
+
+* *Example:* For `n = 5`, the series is 0, 1, 1, 2, 3, 5.  
+
+---
+
+* Write a program to reverse a given number.  
+
+* *Logic:* Extract digits of the number using the modulus operator and reconstruct the number in reverse order.  
+
+* *Example:* For the input `1234`, the output is `4321`.  
+
+---
+
+* Write a program to find the factorial of a given number.  
+
+* *Logic:* Factorial of a number is the product of all positive integers from 1 to the number itself. Use a loop or recursion.  
+
+* *Example:* Factorial of 5 = 5 × 4 × 3 × 2 × 1 = 120.  
+
+---
+
+* Write a program to check if a given string is a palindrome.  
+
+* *Logic:* A string is a palindrome if it reads the same backward as forward. Compare the string with its reverse.  
+
+* *Example:* "radar" is a palindrome, but "java" is not.  
+
+---
+
+* Write a program to find the second largest number in an array.  
+
+* *Logic:* Traverse the array to find the largest and second largest numbers by comparing elements.  
+
+* *Example:* For the array [3, 1, 4, 2], the second largest number is 3.  
+
+---
+
+* Write a program to sort an array using the bubble sort algorithm.  
+
+* *Logic:* Compare adjacent elements and swap them if they are in the wrong order. Repeat until the array is sorted.  
+
+* *Example:* For [4, 2, 3, 1], after sorting, the array becomes [1, 2, 3, 4].  
+
+---
+
+* Write a program to calculate the sum of digits of a given number.  
+
+* *Logic:* Extract digits of the number using modulus and division operators. Add the digits.  
+
+* *Example:* For `123`, the sum of digits is 1 + 2 + 3 = 6.  
+
+---
+
+* Write a program to print the multiplication table of a given number.  
+
+* *Logic:* Use a loop to multiply the number by 1 to 10 and print the results.  
+
+* *Example:* For `n = 3`, the table is:  
+  ```
+  3 × 1 = 3  
+  3 × 2 = 6  
+  ...  
+  3 × 10 = 30  
+  ```  
+
+---
+
+* Write a program to check if two strings are anagrams of each other.  
+
+* *Logic:* Two strings are anagrams if they contain the same characters with the same frequency. Sort both strings and compare them.  
+
+* *Example:* "listen" and "silent" are anagrams.  
+
+---
+
+* Write a program to count the number of vowels and consonants in a string.  
+
+* *Logic:* Traverse the string, check each character, and count vowels (a, e, i, o, u) and consonants.  
+
+* *Example:* For "hello", vowels = 2, consonants = 3.  
+
+---
+
+* Write a program to find the greatest common divisor (GCD) of two numbers.  
+
+* *Logic:* Use the Euclidean algorithm where GCD of two numbers is calculated recursively.  
+
+* *Example:* GCD of 12 and 15 is 3.  
+
+---
+
+14. Write a program to check if a number is an Armstrong number.  
+
+* *Logic:* A number is an Armstrong number if the sum of its digits raised to the power of the number of digits equals the number itself.  
+
+* *Example:* 153 is an Armstrong number because 1³ + 5³ + 3³ = 153.  
+
+---
+
+* Write a program to generate all prime numbers between 1 and 100.  
+
+* *Logic:* Use nested loops to check divisibility for each number from 2 to 100. Print numbers that are prime.  
+
+---
+
+* Write a program to swap two numbers without using a third variable.  
+
+* *Logic:* Use arithmetic operations like addition and subtraction or XOR to swap the numbers.  
+
+* *Example:* If a = 3, b = 5, after swapping: a = 5, b = 3.  
+
+---
+
+* Write a program to print a pattern, such as:  
+  ```
+  *
+  **
+  ***
+  ****
+  ```  
+
+* *Logic:* Use nested loops where the outer loop runs for the number of rows and the inner loop prints stars for each row.  
+
+---
+
+* Write a program to check if a number is a perfect number.  
+
+* *Logic:* A number is perfect if the sum of its divisors (excluding itself) equals the number.  
+
+* *Example:* 6 is a perfect number because 1 + 2 + 3 = 6.  
+
+---
+
+* Write a program to find the largest and smallest numbers in an array.  
+
+* *Logic:* Traverse the array, keeping track of the largest and smallest values.  
+
+* *Example:* For [3, 1, 4, 2], the largest is 4, and the smallest is 1.  
+
+---
+
+* Write a program to implement a basic calculator with operations like addition, subtraction, multiplication, and division.  
+
+* *Logic:* Use a switch-case statement to perform operations based on user input.  
+
+* *Example:* For inputs `5, 3, +`, the result is `8`.  
+
+##############################################
+
+---
+
+
+== Functions and Function Overloading
+
+Which of the following is *true* about function overloading in Java?
+
+a. Function overloading is achieved by changing the return type only.  
+b. Function overloading is achieved by changing the method name only.  
+c. Function overloading is achieved by changing the number or type of parameters.  
+d. Function overloading is not supported in Java.  
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is c.
+====
+
+---
+
+What will be the output of the following code?
+
+[source, java]
+----
+public class Main {
+    public static void display(int num) {
+        System.out.println("Integer: " + num);
+    }
+
+    public static void display(String text) {
+        System.out.println("String: " + text);
+    }
+
+    public static void main(String[] args) {
+        display(10);
+        display("Hello");
+    }
+}
+----
+a. Integer: 10  
+   String: Hello  
+b. Compilation error  
+c. Runtime error  
+d. String: 10  
+   Integer: Hello  
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is a.
+====
+
+---
+
+Can constructors in Java be overloaded?
+
+a. Yes, by changing the number or type of parameters.  
+b. No, constructors cannot be overloaded.  
+c. Yes, but only if the return type is different.  
+d. No, constructors are not considered methods.  
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is a.
+====
+
+---
+
+What will happen if two overloaded methods have the same name and parameters but different return types?
+
+a. The program will compile successfully.  
+b. The program will throw a compilation error.  
+c. The program will throw a runtime error.  
+d. The method with the smaller return type will be chosen.  
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is b.
+====
+
+What will be the output of the following code?
+
+[source, java]
+----
+public class Main {
+    public static void print(Object obj) {
+        System.out.println("Object method called");
+    }
+
+    public static void print(String str) {
+        System.out.println("String method called");
+    }
+
+    public static void main(String[] args) {
+        print(null);
+    }
+}
+----
+a. Object method called  
+b. String method called  
+c. Compilation error  
+d. Runtime error  
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is b.
+====
+
+---
+
+Which of the following statements about overloaded methods in Java is *true*?
+
+a. Overloaded methods must have different return types.  
+b. Overloaded methods must have the same number of parameters.  
+c. Overloaded methods must differ in their parameter list (type, number, or both).  
+d. Overloaded methods must be declared as static.  
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is c.
+====
+
+##############################################
+
+== Java OOP Programming Assignments
+
+==== Assignment 1: Basic Class and Object
+Create a class called `Car` with the following attributes:
+- `make` (String)
+- `model` (String)
+- `year` (int)
+
+Create a constructor to initialize these attributes. Write a method called `displayInfo()` that prints the details of the car.
+
+*Sample Output:*
+```
+Make: Toyota
+Model: Corolla
+Year: 2020
+```
+
+==== Assignment 2: Constructor Overloading
+Create a class called `Person` with two constructors:
+- One constructor should accept the person's name and age.
+- The other constructor should accept only the person's name and set the age to 25 by default.
+
+Write a method called `displayPersonInfo()` that prints the person's details.
+
+*Sample Output:*
+```
+Name: John
+Age: 30
+```
+
+==== Assignment 3: Inheritance and Method Overriding
+Create a base class `Animal` with a method `sound()` that prints "Animal makes a sound". Create a derived class `Dog` that overrides the `sound()` method to print "Bark".
+
+Write a main method to demonstrate inheritance and method overriding.
+
+*Sample Output:*
+```
+Animal makes a sound
+Bark
+```
+
+==== Assignment 4: Encapsulation
+Create a class called `BankAccount` with private attributes:
+- `accountNumber` (String)
+- `balance` (double)
+
+Provide public getter and setter methods to access and modify these attributes. Include a method `deposit(double amount)` to add money to the balance and a method `withdraw(double amount)` to subtract from the balance.
+
+*Sample Output:*
+```
+Account Number: 12345
+Balance: $1000.0
+```
+
+==== Assignment 5: Polymorphism with Method Overloading
+Create a class called `Calculator` with the following methods:
+- `add(int a, int b)`
+- `add(double a, double b)`
+- `add(int a, int b, int c)`
+
+Write a main method to test all the overloaded methods of the `Calculator` class.
+
+*Sample Output:*
+```
+Sum of integers: 5
+Sum of doubles: 7.5
+Sum of three integers: 9
+```
+
+==== Assignment 6: Static Variables and Methods
+Create a class called `Counter` with a static variable `count` and a static method `incrementCount()` to increment the count by 1. Write a main method to demonstrate the use of static variables and methods.
+
+*Sample Output:*
+```
+Count: 1
+Count: 2
+Count: 3
+```
+
+==== Assignment 7: Interface Implementation
+Create an interface called `Shape` with two methods:
+- `double calculateArea()`
+- `double calculatePerimeter()`
+
+Create two classes, `Circle` and `Rectangle`, that implement the `Shape` interface. Each class should provide its own implementation of the methods.
+
+*Sample Output:*
+```
+Circle area: 78.5
+Rectangle area: 20
+```
+
+==== Assignment 8: Abstraction with Abstract Classes
+Create an abstract class called `Vehicle` with an abstract method `move()`. Create two classes, `Car` and `Bicycle`, that extend the `Vehicle` class and implement the `move()` method.
+
+*Sample Output:*
+```
+The car moves fast.
+The bicycle moves slowly.
+```
+
+==== Assignment 9: Aggregation
+Create a class `Library` with an attribute `Book[] books` (an array of books). Create a class `Book` with attributes `title` (String) and `author` (String). Demonstrate the concept of aggregation by creating a `Library` object that contains multiple `Book` objects.
+
+*Sample Output:*
+```
+Library contains:
+1. Title: The Great Gatsby, Author: F. Scott Fitzgerald
+2. Title: Moby Dick, Author: Herman Melville
+```
+
+==== Assignment 10: Exception Handling with Custom Exceptions
+Create a custom exception called `InvalidAgeException` that is thrown when the age of a person is less than 0. Create a class `Person` with an age attribute, and use exception handling to catch invalid ages.
+
+*Sample Output:*
+```
+InvalidAgeException: Age cannot be negative!
+```
+
+
+==== Assignment 11: Using `this` Keyword
+Create a class called `Student` with the following attributes:
+- `name` (String)
+- `age` (int)
+
+In the constructor, use the `this` keyword to distinguish between the instance variables and the constructor parameters. Create a method called `displayInfo()` that displays the student's details.
+
+*Sample Output:*
+
+---
+
+== Question Set (Access Modifier)
+
+
+
+*Which access modifier allows members to be accessed only within the same package and by subclasses?*
+
+[source, java]
+----
+public class Example {
+    protected int number = 10;
+    public void showNumber() {
+        System.out.println(number);
+    }
+}
+----
+
+*Options*:
+
+A. *public*
+
+B. *private*
+
+C. *protected*
+
+D. *default*
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is C
+====
+
+---
+
+*Which of the following access modifiers cannot be used for top-level classes?*
+
+[source, java]
+----
+class MyClass {
+    // Some code here
+}
+----
+
+*Options*:
+
+A. *public*
+
+B. *private*
+
+C. *protected*
+
+D. *default*
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is B and C
+====
+
+
+---
+
+
+*What will happen if a class member is declared without any access modifier?*
+
+[source, java]
+----
+class PackageExample {
+    int data = 100;  // No access modifier
+    void showData() {
+        System.out.println(data);
+    }
+}
+----
+
+*Options*:
+A. *It will be accessible everywhere in the project.*
+
+B. *It will be accessible only within the same package.*
+
+C. *It will be accessible only within the same class.*
+
+D. *It will be accessible in all subclasses.*
+
+.Click Here For Answer
+[%collapsible]
+====
+The answer is B
+====
+
+
+##############################################
+
+
+
+

@@ -1,0 +1,64 @@
+= Mini Project: Student Record Management
+
+== Project Overview
+
+You need to write a Python program that manages student records.
+Each student will have:
+
+* name (string)
+* roll number (integer)
+* grades for subjects (list of integers)
+
+Your program will:
+
+* store all students in a list
+* allow operations like:
+** add a student
+** list all students
+** calculate the average grade of a student
+** show the top-performing student
+** show the set of all subjects taken (using a set)
+** store students in a dictionary with roll number as the key
+* implement the logic using loops and functions
+* demonstrate data types like tuple, list, set, and dictionary
+
+== Requirements
+
+=== 1. Data Structure Design
+
+* Use a dictionary where the **key** is the roll number, and the **value** is a tuple: (student_name, grades_list).
+* Example:
+[source, python]
+----
+students = {
+    101: ("Alice", [90, 85, 88]),
+    102: ("Bob", [70, 75, 80])
+}
+----
+
+=== 2. Functions to Implement
+
+* `add_student()`: Adds a new student.
+* `list_students(students)`: Prints all students with their grades.
+* `average_grade(students, roll_no)`: Calculates the average grade for a specific student.
+* `top_student(students)`: Finds the student with the highest average grade.
+
+=== 3. Suggested Flow
+
+* Show a menu to the user:
+** 1. Add Student
+** 2. List all students
+** 3. Show a student's average grade
+** 4. Show top-performing student
+** 5. Exit
+
+* Use loops (`while` or `for`), data structures (`list`, `set`, `tuple`, `dictionary`), and types (`int`, `str`, `float`).
+
+
+
+== Learning Objectives
+
+* Applying basic Python data types (`int`, `str`, `float`)
+* Using collections (`list`, `tuple`, `set`, `dictionary`)
+* Implementing loops and conditionals (`for`, `while`, `if`)
+* Writing modular code with functions

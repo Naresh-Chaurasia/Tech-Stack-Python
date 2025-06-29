@@ -1,0 +1,649 @@
+= Python Data Structure
+:toc: right
+:toclevels: 5
+:sectnums:
+:sectnumlevels: 5
+:sectnumlevels: 5
+
+== What is a Data Structure?
+
+A *data structure* is a way to store and organize data in a computer so we can use it easily.
+
+Think of it like:
+
+* A list of groceries
+* A dictionary of words and meanings
+* A box with fixed items
+
+Python gives us built-in tools to store and organize data.
+
+== Why Are Data Structures Important?
+
+* They help store **lots of data** in a neat way.
+* You can find, add, or remove data easily.
+* Useful in real-life problems — like keeping scores, storing names, creating apps, etc.
+
+== Types of Data Structures in Python
+
+Here are the most commonly used data structures in Python:
+
+=== 1. List
+
+A *list* is like a row of boxes where you can store anything — numbers, names, or even other lists.
+
+[source, python]
+----
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])  # apple
+----
+
+* Lists use square brackets `[]`
+* You can change (add, remove) items
+* You can mix types: `[1, "hello", 3.5]`
+
+==== List Operations
+
+*1. Creating a List*
+
+[source, python]
+----
+fruits = ["apple", "banana", "cherry"]
+----
+
+*2. Accessing Elements*
+
+[source, python]
+----
+print(fruits[0])      # First item
+print(fruits[-1])     # Last item
+----
+
+*3. Modifying Elements*
+
+[source, python]
+----
+fruits[1] = "orange"
+print(fruits)  # ["apple", "orange", "cherry"]
+----
+
+*4. Adding Elements*
+
+*Append to the end:*
+
+[source, python]
+----
+fruits.append("grape")
+----
+
+*Insert at a specific index:*
+
+[source, python]
+----
+fruits.insert(1, "kiwi")
+----
+
+*5. Removing Elements*
+
+*By value:*
+
+[source, python]
+----
+fruits.remove("apple")
+----
+
+*By index (last by default):*
+
+[source, python]
+----
+fruits.pop()        # Removes last
+fruits.pop(0)       # Removes first
+----
+
+*Using `del`:*
+
+[source, python]
+----
+del fruits[0]
+----
+
+*6. Length of List*
+
+[source, python]
+----
+print(len(fruits))
+----
+
+*7. Looping Through a List*
+
+[source, python]
+----
+for fruit in fruits:
+    print(fruit)
+----
+
+*8. Checking Membership*
+
+[source, python]
+----
+if "banana" in fruits:
+    print("Found banana")
+----
+
+*9. Sorting and Reversing*
+
+[source, python]
+----
+fruits.sort()
+fruits.reverse()
+----
+
+*10. Clearing a List*
+
+[source, python]
+----
+fruits.clear()
+----
+
+Summary Table
+
+[options="header"]
+|===
+| Operation         | Method/Example
+| Access item       | fruits[0]
+| Modify item       | fruits[1] = "orange"
+| Add item          | append(), insert()
+| Remove item       | remove(), pop(), del
+| Get length        | len(fruits)
+| Loop through      | for x in fruits:
+| Check if exists   | "apple" in fruits
+| Sort/Reverse      | sort(), reverse()
+| Clear all items   | clear()
+|===
+
+
+=== 2. Tuple
+
+A *tuple* is like a locked box — once items are inside, you cannot change them.
+
+[source, python]
+----
+colors = ("red", "green", "blue")
+print(colors[1])  # green
+----
+
+* Tuples use round brackets `()`
+* You cannot change, add, or remove items
+* Good for fixed data (e.g., days of the week)
+
+
+##############################################
+
+
+*Creating a Tuple*
+
+[source, python]
+----
+fruits = ("apple", "banana", "cherry")
+numbers = (1, 2, 3, 4)
+mixed = ("hello", 42, 3.14)
+single = ("one",)  # Note the comma
+empty = ()
+----
+
+*Accessing Elements*
+
+[source, python]
+----
+print(fruits[0])     # Output: apple
+print(fruits[-1])    # Output: cherry
+----
+
+*Looping Through a Tuple*
+
+[source, python]
+----
+for fruit in fruits:
+    print(fruit)
+----
+
+*Checking Membership*
+
+[source, python]
+----
+if "banana" in fruits:
+    print("Yes, banana is in the tuple")
+----
+
+*Tuple Slicing*
+
+[source, python]
+----
+print(fruits[1:3])   # Output: ('banana', 'cherry')
+print(fruits[:2])    # Output: ('apple', 'banana')
+print(fruits[-2:])   # Output: ('banana', 'cherry')
+----
+
+*Length of a Tuple*
+
+[source, python]
+----
+print(len(fruits))   # Output: 3
+----
+
+*Count and Index Methods*
+
+[source, python]
+----
+numbers = (1, 2, 2, 3, 2)
+
+print(numbers.count(2))   # Output: 3
+print(numbers.index(3))   # Output: 3
+----
+
+*Tuple Concatenation*
+
+[source, python]
+----
+t1 = (1, 2)
+t2 = (3, 4)
+t3 = t1 + t2
+print(t3)  # Output: (1, 2, 3, 4)
+----
+
+*Tuple Immutability*
+
+[source, python]
+----
+t = (1, 2, 3)
+# t[0] = 10  # ❌ This will raise an error because tuples are immutable
+----
+
+*Summary Table*
+
+[options="header"]
+|===
+| Operation             | Description
+| Access by index       | fruits[0]
+| Loop through          | for item in tuple
+| Check if item exists  | "item" in tuple
+| Slice a tuple         | tuple[start:end]
+| Count occurrences     | tuple.count(value)
+| Find index            | tuple.index(value)
+| Concatenate tuples    | t1 + t2
+| Length of tuple       | len(tuple)
+| Immutability          | Cannot change items
+|===
+
+
+##############################################
+
+
+=== Dictionary
+
+*Creating a Dictionary*
+
+[source, python]
+----
+person = {
+    "name": "Alice",
+    "age": 25,
+    "city": "New York"
+}
+----
+
+*Accessing Values*
+
+[source, python]
+----
+print(person["name"])         # Output: Alice
+print(person.get("age"))      # Output: 25
+----
+
+*Adding a Key-Value Pair*
+
+[source, python]
+----
+person["email"] = "alice@example.com"
+----
+
+*Updating Values*
+
+[source, python]
+----
+person["age"] = 26
+----
+
+*Removing Items*
+
+[source, python]
+----
+person.pop("city")             # Removes 'city'
+del person["email"]            # Deletes 'email'
+----
+
+*Looping Through Keys and Values*
+
+[source, python]
+----
+for key in person:
+    print(key, person[key])
+
+# Or using .items()
+for key, value in person.items():
+    print(key, value)
+----
+
+*Checking if a Key Exists*
+
+[source, python]
+----
+if "name" in person:
+    print("Key 'name' exists")
+----
+
+*Getting Keys, Values, and Items*
+
+[source, python]
+----
+print(person.keys())    # dict_keys([...])
+print(person.values())  # dict_values([...])
+print(person.items())   # dict_items([...])
+----
+
+*Length of Dictionary*
+
+[source, python]
+----
+print(len(person))     # Output: number of keys
+----
+
+*1Clearing a Dictionary*
+
+[source, python]
+----
+person.clear()         # Empties the dictionary
+print(person)          # Output: {}
+----
+
+
+=== 4. Set
+
+A *set* is a bag of unique items — no duplicates allowed!
+
+[source, python]
+----
+numbers = {1, 2, 3, 2, 1}
+print(numbers)  # {1, 2, 3}
+----
+
+* Sets use `{}` like dictionaries but store only values
+* Order is not guaranteed
+* Removes duplicates automatically
+
+*When to Use What?*
+
+|===
+| *Task*                    | *Use This Structure*
+| Store list of items     | List
+| Fixed group of values   | Tuple
+| Lookup by name (key)    | Dictionary
+| Keep only unique values | Set
+|===
+
+---
+
+##############################################
+
+*Creating a Set*
+
+[source, python]
+----
+fruits = {"apple", "banana", "cherry"}
+numbers = set([1, 2, 3])
+empty = set()  # Not {} — that's a dictionary
+----
+
+*Adding Elements*
+
+[source, python]
+----
+fruits.add("orange")
+print(fruits)
+----
+
+*Removing Elements*
+
+[source, python]
+----
+fruits.remove("banana")     # Raises error if item not found
+fruits.discard("kiwi")      # No error if item not found
+print(fruits)
+----
+
+*Accessing Elements (Looping)*
+
+[source, python]
+----
+for fruit in fruits:
+    print(fruit)
+----
+
+*Set Length*
+
+[source, python]
+----
+print(len(fruits))
+----
+
+*Membership Check*
+
+[source, python]
+----
+if "apple" in fruits:
+    print("Found")
+----
+
+*Set Operations*
+
+[source, python]
+----
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a.union(b))        # {1, 2, 3, 4, 5}
+print(a.intersection(b)) # {3}
+print(a.difference(b))   # {1, 2}
+----
+
+*Clearing a Set*
+
+[source, python]
+----
+fruits.clear()
+print(fruits)  # Output: set()
+----
+
+*Copying a Set*
+
+[source, python]
+----
+colors = {"red", "blue"}
+copy_colors = colors.copy()
+----
+
+*Convert List to Set*
+
+[source, python]
+----
+items = ["apple", "banana", "apple"]
+unique_items = set(items)
+print(unique_items)  # {'apple', 'banana'}
+----
+
+== Summary Table
+
+[options="header"]
+|===
+| Operation               | Method/Example
+| Create set              | set(), {"a", "b"}
+| Add item                | add()
+| Remove item             | remove(), discard()
+| Loop through items      | for x in set
+| Length of set           | len()
+| Check membership        | "x" in set
+| Union                   | set1.union(set2)
+| Intersection            | set1.intersection(set2)
+| Difference              | set1.difference(set2)
+| Clear all items         | clear()
+| Copy set                | copy()
+| Convert list to set     | set(list)
+|===
+
+
+##############################################
+
+== Data Structure Loops
+
+*List*
+
+[source, python]
+----
+fruits = ["apple", "banana", "cherry"]
+
+for fruit in fruits:
+    print(fruit)
+----
+
+*Output:*
+apple
+banana
+cherry
+
+---
+
+##############################################
+
+
+
+
+*Tuple*
+
+[source, python]
+----
+colors = ("red", "green", "blue")
+
+for color in colors:
+    print(color)
+----
+
+*Output:*
+red
+green
+blue
+
+---
+
+##############################################
+
+*3. Set*
+
+[source, python]
+----
+numbers = {1, 2, 3, 4}
+
+for num in numbers:
+    print(num)
+----
+
+*Note:* Sets are **unordered**, so the output order may vary.
+
+##############################################
+
+*Dictionary (Keys and Values)*
+
+[source, python]
+----
+student = {"name": "Alice", "age": 14, "grade": "A"}
+
+# Loop through keys
+for key in student:
+    print(key)
+
+# Loop through values
+for value in student.values():
+    print(value)
+
+# Loop through key-value pairs
+for key, value in student.items():
+    print(key, "->", value)
+----
+
+*Output (example):*
+name
+age
+grade
+Alice
+14
+A
+name -> Alice
+age -> 14
+grade -> A
+
+
+##############################################
+
+== Questions
+
+*Question 1:*
+Create a list of 5 of your favorite fruits and print the second fruit.
+
+*Question 2:*
+Add a new fruit to the list using `append()`. Then print the updated list.
+
+*Question 3:*
+Remove one fruit from the list using `remove()` and print the final list.
+
+##############################################
+
+---
+
+*Tuple Questions*
+
+*Question 1:*
+Create a tuple of 4 colors. Print the first and last color.
+
+*Question 2:*
+Try changing one value in the tuple and observe what happens.
+
+*Question 3:*
+Use a loop to print all the items in the tuple.
+
+##############################################
+
+---
+
+*Set Questions*
+
+*Question 1:*
+Create a set of 5 numbers with one duplicate. Print the set and observe the result.
+
+*Question 2:*
+Add a new number to the set using `add()`.
+
+*Question 3:*
+Remove a number using `remove()` or `discard()` and print the final set.
+
+##############################################
+
+---
+
+*Dictionary Questions*
+
+*Question 1:*
+Create a dictionary with keys `name`, `age`, and `grade`. Print the value of `name`.
+
+*Question 2:*
+Add a new key-value pair `city: "New York"` to the dictionary.
+
+*Question 3:*
+Update the `age` value and print the updated dictionary.

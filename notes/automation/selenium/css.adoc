@@ -1,0 +1,154 @@
+= CSS
+:toc: right
+:toclevels:5
+:sectnums:
+
+
+CSS (Cascading Style Sheets) is used to style and layout web pages — for example, to change fonts, colors, spacing, and positioning.
+
+== 1. What is CSS?
+
+CSS is a stylesheet language used to describe the presentation of an HTML document. It allows you to apply styles (like colors, spacing, fonts) to elements.
+
+== 2. Ways to Apply CSS
+
+=== Inline CSS
+
+Inline styles are written inside an HTML tag using the `style` attribute.
+
+[source, html]
+----
+<p style="color: red;">This is red text.</p>
+----
+
+=== Internal CSS
+
+Internal styles are written inside a `<style>` tag in the `<head>` section of the HTML document.
+
+[source, html]
+----
+<head>
+  <style>
+    p {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <p>This is blue text.</p>
+</body>
+----
+
+=== External CSS
+
+External styles are written in a separate `.css` file and linked to the HTML document.
+
+[source, html]
+----
+<!-- In HTML -->
+<link rel="stylesheet" href="styles.css">
+----
+
+[source, css]
+----
+/* In styles.css */
+p {
+  color: green;
+}
+----
+
+== 3. CSS Syntax
+
+A CSS rule consists of a selector and a declaration block.
+
+[source, css]
+----
+selector {
+  property: value;
+}
+----
+
+Example:
+
+[source, css]
+----
+h1 {
+  color: purple;
+  font-size: 24px;
+}
+----
+
+== 4. Common CSS Properties
+
+=== Text Styling
+
+[source, css]
+----
+p {
+  color: navy;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+----
+
+=== Box Model
+
+[source, css]
+----
+div {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid black;
+}
+----
+
+* `margin` — space outside the element
+* `padding` — space inside the element
+* `border` — a visible outline around the element
+
+=== Background and Colors
+
+[source, css]
+----
+body {
+  background-color: lightgray;
+}
+div {
+  background-color: white;
+  color: black;
+}
+----
+
+=== Layout with Flexbox
+
+[source, css]
+----
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+----
+
+== 5. CSS Selectors
+
+[source, css]
+----
+/* Select by tag */
+p {}
+
+/* Select by class */
+.intro {}
+
+/* Select by ID */
+#main-title {}
+----
+
+== 6. Comments in CSS
+
+Use `/* */` for comments.
+
+[source, css]
+----
+/* This is a CSS comment */
+----
+

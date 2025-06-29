@@ -1,0 +1,70 @@
+= Editors
+:toc: right
+:toclevels: 5
+:sectnums: 5
+
+== Intellij - Tao W
+
+=== Section2: Text Navigation
+
+Here is the AsciiDoc-formatted table with text navigation shortcuts for IntelliJ IDEA on **Mac** and **Windows/Linux**:
+
+
+[options="header"]
+|===
+| Action | Windows/Linux | macOS
+| Move Caret to Next *Word* | Ctrl + Right Arrow | Option + Right Arrow
+| Move Caret to Previous Word | Ctrl + Left Arrow | Option + Left Arrow
+| Move Caret to *Line* Start | Home | Cmd + Left Arrow
+| Move Caret to Line End | End | Cmd + Right Arrow
+| Move Caret to *Document* Start | Ctrl + Home | Cmd + Up Arrow
+| Move Caret to Document End | Ctrl + End | Cmd + Down Arrow
+| Select to Next Word | Ctrl + Shift + Right Arrow | Option + Shift + Right Arrow
+| Select to Previous Word | Ctrl + Shift + Left Arrow | Option + Shift + Left Arrow
+| Select to *Line* Start | Shift + Home | Cmd + Shift + Left Arrow
+| Select to Line End | Shift + End | Cmd + Shift + Right Arrow
+| Select to *Document* Start | Ctrl + Shift + Home | Cmd + Shift + Up Arrow
+| Select to Document End | Ctrl + Shift + End | Cmd + Shift + Down Arrow
+|===
+
+##################################################
+
+---
+
+*Page*
+
+[options="header"]
+|===
+| Action | Windows/Linux | macOS
+| Scroll Up One Page | Page Up | Fn + Up Arrow
+| Scroll Down One Page | Page Down | Fn + Down Arrow
+| Move Caret Up One Page | Ctrl + Page Up | Cmd + Up Arrow
+| Move Caret Down One Page | Ctrl + Page Down | Cmd + Down Arrow
+| Jump to Previous Editing Location | Ctrl + Shift + Backspace | Cmd + Shift + Backspace
+| Jump to Last Cursor Position | Ctrl + Alt + Left Arrow | Cmd + Option + Left Arrow
+| Jump to Next Cursor Position | Ctrl + Alt + Right Arrow | Cmd + Option + Right Arrow
+| Navigate Back | Ctrl + Alt + Left Arrow | Cmd + Option + Left Arrow
+| Navigate Forward | Ctrl + Alt + Right Arrow | Cmd + Option + Right Arrow
+|===
+
+=== Section2: Editing and Working With Code
+
+---
+
+[options="header"]
+|===
+| Action | Shortcut (Mac)
+| Camel Hump - Type uppercase to access class name | (Built-in feature, no shortcut)
+| Move Lines | Shift + Alt + Down
+| Move Methods | Shift + Command + Down
+| Duplicate a Line | Command + D
+| Delete a Line | Command + Delete
+| View Method Parameters | Command + P
+| Multi-Line Comment | Alt + Command + /
+| Collapse the Code | Command + (-) Key
+| Expand the Code | Command + (+) Key
+|===
+
+
+
+

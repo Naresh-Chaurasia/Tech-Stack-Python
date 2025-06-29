@@ -1,0 +1,561 @@
+= Web Services
+:toc: right
+:toclevels:5
+:sectnums:
+
+
+== pip
+
+* `pip` stands for *Pip Installs Packages*.
+* It is the standard package manager for Python.
+* It helps install and manage additional libraries and dependencies that are not part of the standard Python library.
+
+---
+
+##############################################
+
+*Why use pip?*
+
+* To easily install and manage third-party libraries.
+* Helps in keeping project dependencies organized.
+* Works well in virtual environments.
+
+---
+
+##############################################
+
+*Checking if pip is installed*
+
+Run this in your terminal or command prompt:
+
+[source, bash]
+----
+pip --version
+----
+
+Expected output:
+
+[source, bash]
+----
+pip 24.0 from C:\Python39\lib\site-packages\pip (python 3.9)
+----
+
+---
+
+##############################################
+
+*Installing a Package (Example: requests)*
+
+Let's install the `requests` library, which is used to make HTTP requests.
+
+[source, bash]
+----
+pip install requests
+----
+
+Once installed, you can use it in your Python script:
+
+[source, python]
+----
+import requests
+
+response = requests.get("https://api.github.com")
+print(response.status_code)
+print(response.json())
+----
+
+---
+
+##############################################
+
+*Installing a Specific Version*
+
+[source, bash]
+----
+pip install requests==2.28.0
+----
+
+*Upgrading a Package*
+
+[source, bash]
+----
+pip install --upgrade requests
+----
+
+*Uninstalling a Package*
+
+[source, bash]
+----
+pip uninstall requests
+----
+
+*Listing Installed Packages*
+
+[source, bash]
+----
+pip list
+----
+
+*Saving Installed Packages to a File*
+
+[source, bash]
+----
+pip freeze > requirements.txt
+----
+
+*Installing from a requirements.txt File*
+
+[source, bash]
+----
+pip install -r requirements.txt
+----
+
+*Summary*
+
+* `pip` is the Python package installer.
+* Use it to manage libraries like `requests`, `numpy`, `pandas`, etc.
+* Make sure to use virtual environments to avoid conflicts between project dependencies.
+
+
+
+##############################################
+
+---
+
+Here are concise and clear notes on *Modules in Python*, suitable for teaching or learning:
+
+---
+
+## Python Modules
+
+*What is a Module?*
+
+- A *module* is a file containing Python code (functions, classes, variables).
+- It helps in *code reusability*, *modularity*, and *organization*.
+- Any `.py` file is a module.
+
+---
+
+*Creating and Using a Module*
+
+*Example: `mymodule.py`*
+
+```python
+def greet(name):
+    return f"Hello, {name}!"
+
+pi = 3.1415
+```
+
+*Using the Module in Another File*
+```python
+import mymodule
+
+print(mymodule.greet("Alice"))      # Output: Hello, Alice!
+print(mymodule.pi)                  # Output: 3.1415
+```
+
+---
+
+*Importing Modules*
+
+[cols="1,1", options="header"]
+|===
+| Syntax
+| Description
+
+| `import module_name`
+| Imports the entire module
+
+| `from module_name import x`
+| Imports a specific function/class/variable
+
+| `from module_name import *`
+| Imports everything (not recommended)
+
+| `import module_name as alias`
+| Uses an alias for the module
+|===
+
+
+*Example:*
+```python
+from math import sqrt
+print(sqrt(25))  # 5.0
+```
+
+---
+
+*Built-in Modules*
+
+Python includes many useful built-in modules like:
+
+- `math` – Math operations
+- `random` – Random number generation
+- `datetime` – Date and time handling
+- `os` – Interacting with the operating system
+- `sys` – Access to system-specific parameters
+
+---
+
+*Exploring a Module*
+
+Use the following functions:
+
+```python
+import math
+
+print(dir(math))       # Lists functions and attributes
+print(help(math))      # Documentation
+```
+
+---
+
+*The `__name__` Variable*
+
+```python
+# inside module file
+if __name__ == "__main__":
+    print("This file is running directly")
+```
+
+This helps distinguish whether the script is being *run directly* or *imported* as a module.
+
+##############################################
+
+*What it Does*
+
+* When a Python file is run directly (e.g., `python myscript.py`), the `__name__` variable is automatically set to `"__main__"`.
+* If the file is *imported* as a module in another script, `__name__` is set to the module's name, and the block inside `if __name__ == "__main__":` does *not* execute.
+
+*Practical Uses*
+
+* Separates reusable code (functions/classes) from executable test code.
+* Allows you to run test code when executing the file directly, but prevent it from running during imports.
+
+*Example*
+
+*math_utils.py*
+
+[source, python]
+----
+def add(a, b):
+    return a + b
+
+def multiply(a, b):
+    return a * b
+
+# Test code
+if __name__ == "__main__":
+    print("Running tests...")
+    print(add(2, 3))        # Output: 5
+    print(multiply(2, 3))   # Output: 6
+----
+
+*Running the file directly*
+
+[source, bash]
+----
+$ python math_utils.py
+----
+
+.Output
+----
+Running tests...
+5
+6
+----
+
+*Importing the module*
+
+[source, python]
+----
+from math_utils import add
+
+print(add(10, 20))  # Output: 30
+----
+
+NOTE: The test code block inside `if __name__ == "__main__":` will *not* run when the module is imported.
+
+*Summary*
+
+Using `if __name__ == "__main__":` helps make Python files more reusable, modular, and testable. It's considered a best practice in Python programming.
+
+##############################################
+
+== Python Packages
+
+*What is a Package?*
+
+A **package** is a way of organizing related Python modules together. It's a **directory** that contains a special file named `__init__.py`.
+
+> Think of a package like a folder, and modules like files inside that folder.
+
+---
+
+*Why Use Packages?*
+
+* To organize code into **logical, manageable groups**
+* Makes **code reusable**
+* Helps in **avoiding name conflicts**
+
+---
+
+*Structure of a Package*
+
+```plaintext
+my_package/
+├── __init__.py
+├── module1.py
+├── module2.py
+```
+
+* `__init__.py`: Tells Python that this directory should be treated as a package.
+* `module1.py` and `module2.py`: Regular Python files (modules) containing functions, classes, etc.
+
+---
+
+*Creating and Using a Package*
+
+* Step 1: Create Package Directory
+
+```bash
+mkdir my_package
+touch my_package/__init__.py
+touch my_package/math_utils.py
+```
+
+* Step 2: Add code in `math_utils.py`
+
+```python
+# math_utils.py
+
+def add(a, b):
+    return a + b
+```
+
+* Step 3: Import and Use in Another Script
+
+```python
+# main.py
+
+from my_package import math_utils
+
+result = math_utils.add(5, 3)
+print(result)  # Output: 8
+```
+
+---
+
+* *Import Variations*
+
+[cols="40,60", options="header"]
+|===
+| Syntax                                 | Purpose
+
+| `import my_package.module1`
+| Imports entire module
+
+| `from my_package import module1`
+| Imports specific module
+
+| `from my_package.module1 import func`
+| Imports a specific function/class
+
+| `import my_package.module1 as m1`
+| Uses an alias for the module
+|===
+
+---
+
+*Built-in Python Packages Examples*
+
+[cols="30,70", options="header"]
+|===
+| Package    | Purpose
+
+| `os`
+| Interacts with the operating system
+
+| `math`
+| Provides mathematical functions
+
+| `random`
+| Generates random numbers
+
+| `datetime`
+| Works with dates and times
+|===
+
+
+---
+
+*Installing External Packages*
+
+You can install third-party packages using `pip`:
+```bash
+pip install numpy
+```
+
+Then use it in your Python code:
+```python
+import numpy as np
+```
+
+---
+
+Would you like me to provide this in AsciiDoc format too for your teaching material?
+
+
+##############################################
+
+
+== Files using `os` Module
+
+To open and read files using the `os` module in Python, you typically use the `os` module in combination with the built-in `open()` function, as `os` does not directly provide file reading functions. However, `os` can be helpful for file manipulation like checking if a file exists, getting the file path, etc.
+
+*Example: Opening and Reading a File using `os` module*
+
+[source, python]
+----
+
+import os
+
+# Check if the file exists
+file_path = 'example.txt'
+
+if os.path.exists(file_path):
+
+    # Open the file in read mode
+    file = open(file_path, 'r')
+
+    # Read the content of the file
+    content = file.read()
+
+    print(content)  # Display the content
+    # Close the file
+    file.close()
+else:
+    print("File does not exist")
+
+#####
+
+import os
+
+// Check if the file exists
+file_path = 'example.txt'
+
+if os.path.exists(file_path):
+    // Open the file in read mode
+    with open(file_path, 'r') as file:
+        // Read the content of the file
+        content = file.read()
+        print(content)  // Display the content
+else:
+    print("File does not exist")
+----
+
+*Explanation*:
+
+- `os.path.exists(file_path)` checks if the file exists at the given path.
+- `open(file_path, 'r')` is used to open the file in "read" mode. You can replace `'r'` with other modes like `'w'` for write or `'a'` for append.
+- `file.read()` reads the entire content of the file.
+- Using `with` ensures the file is properly closed after reading, even if an error occurs.
+
+*Example: Reading a File Line by Line using `os` module*
+
+[source, python]
+----
+import os
+
+file_path = 'example.txt'
+
+if os.path.exists(file_path):
+    with open(file_path, 'r') as file:
+        // Read the file line by line
+        for line in file:
+            print(line.strip())  // `strip()` removes trailing newlines
+else:
+    print("File does not exist")
+----
+
+*Explanation*:
+
+- `for line in file` iterates over each line in the file.
+- `line.strip()` removes any leading or trailing whitespace (including newline characters).
+
+*Example: Checking if File is Readable or Writable using `os` module*
+
+[source, python]
+----
+import os
+
+file_path = 'example.txt'
+
+// Check if file is readable and writable
+if os.access(file_path, os.R_OK):
+    print(f"File {file_path} is readable.")
+else:
+    print(f"File {file_path} is not readable.")
+
+if os.access(file_path, os.W_OK):
+    print(f"File {file_path} is writable.")
+else:
+    print(f"File {file_path} is not writable.")
+----
+
+*Explanation*:
+
+- `os.access(file_path, os.R_OK)` checks if the file is readable.
+- `os.access(file_path, os.W_OK)` checks if the file is writable.
+
+*Conclusion*
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+connections = [
+('Amsterdam', 'Dublin', 100),
+('Amsterdam', 'Rome', 140),
+('Rome', 'Warsaw', 130),
+('Minsk', 'Prague', 95),
+('Stockholm', 'Rome', 190),
+('Copenhagen', 'Paris', 120),
+('Madrid', 'Rome', 135),
+('Lisbon', 'Rome', 170),
+('Dublin', 'Rome', 170)
+]
+
+
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+

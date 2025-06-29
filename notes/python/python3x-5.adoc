@@ -1,0 +1,106 @@
+= Python 3x-5
+:toc: right
+:toclevels:5
+:sectnums:
+
+
+== Regular Expressions in Python
+
+Regular expressions (or regex) are used to search, match, and manipulate text using patterns. Python provides the `re` module for working with regex.
+
+=== 1. Importing the `re` Module
+
+[source,python]
+----
+import re
+----
+
+=== 2. Common Regex Functions
+
+[cols="1,3", options="header"]
+|===
+| Function          | Description
+| `re.search()`     | Searches for the pattern anywhere in the string
+| `re.match()`      | Checks for a match only at the beginning
+| `re.findall()`    | Returns all non-overlapping matches
+| `re.sub()`        | Replaces occurrences of a pattern
+| `re.split()`      | Splits string by the occurrences of the pattern
+|===
+
+=== 3. Basic Examples
+
+==== a. `re.search()`
+
+[source,python]
+----
+import re
+
+text = "The rain in Spain"
+result = re.search("rain", text)
+
+if result:
+    print("Pattern found!")
+----
+
+==== b. `re.findall()`
+
+[source,python]
+----
+text = "The number is 123 and pin is 4567"
+numbers = re.findall(r'\d+', text)
+print(numbers)  # Output: ['123', '4567']
+----
+
+==== c. `re.sub()`
+
+[source,python]
+----
+text = "Hello 123, Bye 456"
+new_text = re.sub(r'\d+', '###', text)
+print(new_text)  # Output: Hello ###, Bye ###
+----
+
+=== 4. Common Regex Patterns
+
+[cols="1,3", options="header"]
+|===
+| Pattern    | Meaning
+| `.`        | Any character except newline
+| `\d`       | Digit (0-9)
+| `\D`       | Non-digit
+| `\w`       | Word character (a-z, A-Z, 0-9, _)
+| `\W`       | Non-word character
+| `\s`       | Whitespace
+| `^`        | Start of string
+| `$`        | End of string
+| `*`        | 0 or more repetitions
+| `+`        | 1 or more repetitions
+| `?`        | 0 or 1 repetition
+| `{n}`      | Exactly n times
+| `{n,}`     | At least n times
+| `{n,m}`    | Between n and m times
+|===
+
+#####
+
+== Phone Number
+
+We can use Python's `re` module to validate if a phone number matches a specific pattern.
+
+=== Example: Validate 10-digit Phone Number
+
+This pattern checks if the phone number contains exactly 10 digits.
+
+[source,python]
+----
+import re
+
+def is_valid_phone(number):
+    pattern = r'^\d{10}$'  # matches exactly 10 digits
+    return bool(re.match(pattern, number))
+
+# Test cases
+print(is_valid_phone("9876543210"))  # True
+print(is_valid_phone("12345"))       # False
+print(is_valid_phone("abc1234567"))  # False
+----

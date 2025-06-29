@@ -1,0 +1,117 @@
+
+=== What is AOP?
+
+*Aspect-Oriented Programming (AOP)* helps you separate cross-cutting concerns (like logging, security, transactions) from your main business logic.
+
+For example, instead of writing logging code in every method, you write it **once** in an "Aspect" and apply it **where needed**.
+
+---
+
+=== Key AOP Concepts
+
+[cols="1,3", options="header"]
+|===
+| Concept | Description
+
+| *Aspect*
+| A class that contains cross-cutting logic (e.g., logging).
+
+| *Advice*
+| The code to be executed at a join point (e.g., before a method runs).
+
+| *Join Point*
+| A point in the execution of your program (like a method call).
+
+| *Pointcut*
+| An expression that matches join points (e.g., all methods in a package).
+|===
+
+
+---
+
+=== Maven Dependency
+
+To use AOP in Spring, add this to your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
+```
+
+---
+
+=== Example Code
+
+==== 1. Business Logic – `MyService.java`
+
+```java
+package com.example.demo.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyService {
+    public void doWork() {
+        System.out.println("Doing actual work...");
+    }
+}
+```
+
+==== 2. Logging Aspect – `LoggingAspect.java`
+
+```java
+package com.example.demo.aspect;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+    @Before("execution(* com.example.demo.service.*.*(..))")
+    public void logBeforeMethod() {
+        System.out.println("Logging before method execution...");
+    }
+}
+```
+
+==== 3. Spring Boot Application – `DemoApplication.java`
+
+```java
+package com.example.demo;
+
+import com.example.demo.service.MyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication implements CommandLineRunner {
+
+    @Autowired
+    private MyService myService;
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+        myService.doWork();
+    }
+}
+```
+
+---
+
+=== Output
+
+```
+Logging before method execution...
+Doing actual work...
+```

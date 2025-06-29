@@ -1,0 +1,15 @@
+= Progress Report
+:toc: right
+:toclevels:5
+:sectnums:
+
+* Data Types
+* Loops
+* Operators
+* Functions
+* Data Structure
+** List
+** Set
+** Tuple
+** Dictionary
+* Mini Project

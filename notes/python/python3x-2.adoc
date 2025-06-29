@@ -1,0 +1,574 @@
+= Advanced Python Programming * 2
+:toc: right
+:toclevels: 5
+:sectnums:
+
+== Object-Oriented Programming
+
+=== Classes in Python
+
+* A *class* is a blueprint for creating objects.
+* It allows you to group *data (attributes)* and *functions (methods)* into a single unit.
+
+* Python uses *OOP principles* such as:
+*  *Encapsulation*: Grouping data and functions together.
+*  *Inheritance*: Reusing code from a parent class.
+*  *Polymorphism*: Using a common interface for multiple data types.
+*  *Abstraction*: Hiding implementation details from the user.
+
+=== Defining a Class
+
+* A class is defined using the `class` keyword.
+* The *constructor method* `__init__()` is called when an object is created.
+* `self` refers to the *current instance* of the class.
+
+.Example: Defining a basic class
+[source, python]
+----
+
+class Car:
+    # Constructor to initialize the object
+    def __init__(self):
+        print('Inside init')
+        print(self)
+        print('-----')
+
+    # Method to display car details
+    def display(self):
+        print('Inside Display')
+
+c = Car()
+print('Print value of c ----- ')
+print(c)
+
+
+####
+
+class Car:
+    # Constructor to initialize the object
+    def __init__(self, brand1, model1):
+        print('Inside init...')
+        self.brand = brand1
+        self.model = model1
+
+
+    # Method to display car details
+    def display(self):
+        print(self.model)
+        print(self.brand)
+
+
+c = Car('TATA', 2025)
+
+
+
+####
+
+class Car:
+    # Constructor to initialize the object
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    # Method to display car details
+    def display(self):
+        print(f"Car: {self.brand} {self.model}")
+
+# Creating objects of the Car class
+car1 = Car("Toyota", "Corolla")
+car2 = Car("Honda", "Civic")
+
+# Accessing methods
+car1.display()
+car2.display()
+
+print(car1.model)
+
+
+----
+
+.Output:
+----
+Car: Toyota Corolla
+Car: Honda Civic
+Corolla
+----
+
+=== Class vs. Object
+
+* *Class*: A template or blueprint.
+* *Object*: An instance of a class with *specific values*.
+
+.Example:
+[source, python]
+----
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# Creating two objects
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+print(person1.name, person1.age)  # Alice 30
+print(person2.name, person2.age)  # Bob 25
+----
+
+=== Instance Variables and Methods
+
+* *Instance variables* belong to a specific object.
+* They are created inside the constructor using `self`.
+* *Instance methods* are functions that operate on an instance of the class.
+
+.Example:
+[source, python]
+----
+class Student:
+    def __init__(self, name, grade):
+        self.name = name         # Instance variable
+        self.grade = grade       # Instance variable
+
+    def display_info(self):      # Instance method
+        print(f"{self.name} scored {self.grade}")
+
+# Creating objects
+s1 = Student("John", "A")
+s2 = Student("Emily", "B")
+
+# Accessing instance methods
+s1.display_info()
+s2.display_info()
+----
+
+.Output:
+----
+John scored A
+Emily scored B
+----
+
+=== Class Variables and Methods
+* *Class variables* are shared across all objects of a class.
+* Defined *outside the constructor*.
+* Accessed using the class name or `self`.
+
+.Example:
+[source, python]
+----
+class Employee:
+    company = "TechCorp"   # Class variable
+
+    def __init__(self, name, salary):
+        self.name = name       # Instance variable
+        self.salary = salary   # Instance variable
+
+    def display(self):
+        print(f"{self.name} works at {Employee.company} and earns {self.salary}")
+
+# Creating objects
+e1 = Employee("Alice", 50000)
+e2 = Employee("Bob", 60000)
+
+# Accessing methods
+e1.display()
+e2.display()
+----
+
+.Output:
+----
+Alice works at TechCorp and earns 50000
+Bob works at TechCorp and earns 60000
+----
+
+
+=== Inheritance
+
+* *Inheritance* allows one class to *acquire the properties* of another.
+* The *parent class* passes its attributes and methods to the *child class*.
+
+.Example:
+[source, python]
+----
+# Parent class
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+# Child class inheriting from Animal
+class Dog(Animal):
+    def bark(self):
+        print("Dog barks")
+
+# Creating object of child class
+d = Dog()
+
+# Accessing parent and child methods
+d.sound()   # Inherited from Animal class
+d.bark()    # Dog's own method
+
+----
+
+=== Multiple Inheritance
+
+* A class can *inherit from multiple parent classes*.
+
+.Example:
+[source, python]
+----
+class Parent1:
+    def func1(self):
+        print("Parent1 function")
+
+class Parent2:
+    def func2(self):
+        print("Parent2 function")
+
+# Multiple inheritance
+class Child(Parent1, Parent2):
+    def child_func(self):
+        print("Child function")
+
+# Creating object
+c = Child()
+c.func1()        # Parent1 function
+c.func2()        # Parent2 function
+c.child_func()   # Child function
+----
+
+=== 9. Encapsulation / Access Modifiers
+
+* *Encapsulation* restricts access to certain variables or methods.
+* Achieved using *private variables* with a `__` prefix.
+
+
+##############################################
+
+Access modifiers in Python define the accessibility of class members (variables and methods) within and outside the class. Python provides three types of access modifiers:
+
+==== Public
+
+Public members can be accessed from anywhere in the program.
+
+[source, python]
+----
+class Car:
+    def __init__(self, brand):
+        self.brand = brand  # Public attribute
+
+    def display(self):
+        print(f"Car brand: {self.brand}")  # Public method
+
+car = Car("Toyota")
+print(car.brand)  # Accessible outside the class
+car.display()  # Accessible outside the class
+----
+
+==== Protected
+
+Protected members are prefixed with a single underscore (`_`). They can be accessed within the class and subclasses, but not recommended outside.
+
+[source, python]
+----
+class Vehicle:
+    def __init__(self, brand):
+        self._brand = brand  # Protected attribute
+
+    def _display(self):  # Protected method
+        print(f"Vehicle brand: {self._brand}")
+
+class Car(Vehicle):
+    def show(self):
+        print(f"Accessing protected member: {self._brand}")  # Accessible in subclass
+
+car = Car("Ford")
+car.show()
+print(car._brand)  # Not recommended, but accessible
+
+################## Subclass Accessing Protected ##################
+
+# Parent class
+class Vehicle:
+    def __init__(self, brand):
+        self._brand = brand  # Protected attribute
+
+    def _display_brand(self):  # Protected method
+        print(f"Vehicle brand: {self._brand}")
+
+# Child class inheriting from Vehicle
+class Car(Vehicle):
+    def show_details(self):
+        print(f"Accessing protected attribute: {self._brand}")  # Accessing protected attribute
+        self._display_brand()  # Calling protected method
+
+# Creating object of child class
+car = Car("Toyota")
+car.show_details()
+
+# Accessing protected member outside the class (Not recommended)
+print(car._brand)  # Works, but should be avoided
+
+
+----
+
+==== Private
+
+Private members are prefixed with double underscores (`__`). They are not directly accessible outside the class.
+
+[source, python]
+----
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private attribute
+
+    def get_balance(self):
+        return self.__balance  # Accessed via method
+
+account = BankAccount(1000)
+print(account.get_balance())  # Allowed
+# print(account.__balance)  # Error: AttributeError
+----
+
+*Summary*
+
+* *Public*: Accessible everywhere (default).
+* *Protected*: Intended for internal use but accessible outside with `_attribute`.
+* *Private*: Not directly accessible outside but can be accessed using name mangling.
+
+Python relies on convention rather than strict enforcement for access control.
+
+
+##############################################
+
+
+=== Polymorphism
+
+
+*Polymorphism* means *"many forms."* It allows the same interface (method name) to be used for different data types or objects.
+
+---
+
+==== Method Overriding
+
+----
+
+class Animal:
+    def make_sound1(self):
+        print("Animal makes a sound")
+
+    def make_sound(self):
+        print("Animal")
+
+
+class Dog(Animal):
+    def make_sound2(self):
+        print("Dog barks")
+
+    def make_sound(self):
+        print("Dog")
+
+
+d = Dog()
+
+d.make_sound()
+
+a = Animal()
+
+a.make_sound()
+
+----
+
+
+*Method Overriding (Polymorphism in Inheritance)*
+
+When a child class provides a specific implementation of a method that is already defined in its parent class.
+
+*Example: Animal Sounds*
+
+```python
+class Animal:
+    def make_sound(self):
+        print("Animal makes a sound")
+
+class Dog(Animal):
+    def make_sound(self):
+        print("Dog barks")
+
+class Cat(Animal):
+    def make_sound(self):
+        print("Cat meows")
+
+# Using polymorphism
+animals = [Dog(), Cat()]
+
+for animal in animals:
+    animal.make_sound()  # Calls the overridden method in each subclass
+```
+*Output:*
+```
+Dog barks
+Cat meows
+```
+
+👉 Here, `make_sound()` behaves differently for `Dog` and `Cat`.
+
+---
+
+==== 2. Operator Overloading
+
+Python allows us to *redefine built-in operators* for custom behavior using special methods.
+
+*Example: Overloading `+` Operator*
+
+```python
+class Book:
+    def __init__(self, pages):
+        self.pages = pages
+
+    def __add__(self, other):
+        return Book(self.pages + other.pages)
+
+    def __str__(self):
+        return f"Total pages: {self.pages}"
+
+book1 = Book(100)
+book2 = Book(150)
+book3 = book1 + book2  # Uses __add__ method
+
+print(book3)
+```
+*Output:*
+```
+Total pages: 250
+```
+
+👉 The `+` operator is redefined to *add pages of books* instead of just numbers.
+
+##############################################
+
+This code demonstrates *operator overloading* in Python. It customizes the `+` operator (`__add__` method) to *add pages of books* instead of just numbers.
+
+---
+
+*Step-by-Step Breakdown*
+
+*1. Class Definition*
+
+```python
+class Book:
+    def __init__(self, pages):
+        self.pages = pages
+```
+- A `Book` class is created.
+- The constructor (`__init__`) initializes each book with a number of `pages`.
+
+##############################################
+
+*2. Overloading the `+` Operator*
+
+```python
+def __add__(self, other):
+    return Book(self.pages + other.pages)
+```
+- This method *overloads* the `+` operator.
+- Instead of performing standard addition, it creates a new `Book` object with the sum of `pages` from both books.
+
+##############################################
+
+*3. String Representation*
+
+```python
+def __str__(self):
+    return f"Total pages: {self.pages}"
+```
+- This method *defines how the object is printed*.
+- When `print(book3)` is called, it returns `"Total pages: 250"`.
+
+##############################################
+
+*4. Creating Book Objects*
+
+```python
+book1 = Book(100)  # Book with 100 pages
+book2 = Book(150)  # Book with 150 pages
+```
+- Two `Book` objects are created.
+
+##############################################
+
+*5. Using the Overloaded `+` Operator*
+
+```python
+book3 = book1 + book2  # Uses __add__ method
+```
+- The `+` operator calls `__add__()`.
+- `book1.pages (100) + book2.pages (150) = 250`
+- A new `Book` object (`book3`) is created with *250 pages*.
+
+##############################################
+
+*6. Printing the Result*
+
+```python
+print(book3)
+```
+- Calls `__str__()` to display `"Total pages: 250"`.
+
+---
+
+##############################################
+
+*Final Output*
+
+```
+Total pages: 250
+```
+
+*Key Takeaways*
+
+✔ *Operator Overloading*: Customizes how operators work on user-defined objects.
+✔ *`__add__()` Method*: Defines behavior for `+`.
+✔ *`__str__()` Method*: Controls object string representation.
+✔ *Creates a new object* instead of modifying existing ones.
+
+Would you like an example with *other operators* (like `-`, `*`, etc.)? 🚀
+
+
+##############################################
+
+---
+
+
+==== Duck Typing
+
+*Duck Typing (Polymorphism Without Inheritance)*
+
+In Python, polymorphism is often implemented *without* inheritance. Instead, it relies on "duck typing" (if it behaves like a duck, it is a duck).
+
+*Example: Common Interface Without Inheritance*
+
+```python
+class Sparrow:
+    def fly(self):
+        print("Sparrow can fly high!")
+
+class Airplane:
+    def fly(self):
+        print("Airplane flies in the sky!")
+
+def take_off(entity):
+    entity.fly()  # Doesn't check type, just calls the method
+
+take_off(Sparrow())
+take_off(Airplane())
+```
+
+*Output:*
+
+```
+Sparrow can fly high!
+Airplane flies in the sky!
+```
+👉 Both classes have *fly()* but are unrelated by inheritance.
+
+---
+

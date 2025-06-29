@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Components Sample</title>
+    <style>
+        .flex-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        .flex-item {
+            flex: 1;
+            padding: 10px;
+            color: white;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .grid-item {
+            padding: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Main Heading</h1>
+    <p>This is a <strong>bold</strong> paragraph of text.</p>
+
+    <h2>Form Example</h2>
+    <form action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Table Example</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Alice</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>30</td>
+        </tr>
+    </table>
+
+    <h2>Layout with div and span</h2>
+    <div style="background-color: lightblue; padding: 10px;">
+        <span style="color: red;">Hello</span> world!
+    </div>
+
+    <h2>Flexbox Layout</h2>
+    <div class="flex-container">
+        <div class="flex-item" style="background-color: yellow;">Left</div>
+        <div class="flex-item" style="background-color: orange;">Right</div>
+    </div>
+
+    <h2>Grid Layout</h2>
+    <div class="grid-container">
+        <div class="grid-item" style="background-color: lightgreen;">Column 1</div>
+        <div class="grid-item" style="background-color: lightpink;">Column 2</div>
+    </div>
+</body>
+</html>

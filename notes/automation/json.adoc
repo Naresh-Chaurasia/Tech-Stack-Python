@@ -1,0 +1,539 @@
+= JSON
+:toc: right
+:toclevels: 5
+:sectnums: 5
+
+* https://jsonpathfinder.com/
+* https://jsonpath.com/
+
+== JSON
+
+JSON (JavaScript Object Notation) is a lightweight data-interchange format that's easy for humans to read and write and easy for machines to parse and generate.
+It's commonly used for transmitting data in web applications between a server and a client.
+
+*Key Features of JSON:*
+
+* Data is represented in key-value pairs.
+* Uses simple syntax with minimal formatting (e.g., no comments).
+* Commonly used with APIs for exchanging data.
+
+*JSON Syntax:*
+
+* JSON objects are enclosed in `{ }`.
+* Data is written in key-value pairs, separated by a colon `:`.
+* Arrays are enclosed in `[ ]`.
+
+*Student JSON Example:*
+
+```json
+{
+    "studentId": "S12345",
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": 21,
+    "address": {
+        "street": "123 Elm Street",
+        "city": "Springfield",
+        "state": "IL",
+        "postalCode": "62704"
+    },
+    "courses": [
+        {
+            "courseId": "CSE101",
+            "courseName": "Introduction to Computer Science",
+            "credits": 4
+        },
+        {
+            "courseId": "MTH201",
+            "courseName": "Calculus I",
+            "credits": 3
+        }
+    ],
+    "isEnrolled": true
+}
+```
+
+*Explanation:*
+
+* The `address` is a nested JSON object containing details about the student's residence.
+* The `courses` field is an array containing multiple JSON objects, each representing a course the student is enrolled in.
+* The `isEnrolled` key is a boolean indicating the enrollment status of the student.
+
+---
+
+*Accessing JSON Elements:*
+
+1. **Accessing the `firstName`:**
+
+```javascript
+let firstName = student.firstName;
+console.log(firstName); // Output: John
+```
+
+2. **Accessing the `age`:**
+
+```javascript
+let age = student.age;
+console.log(age); // Output: 21
+```
+
+3. **Accessing the `city` in the `address` object:**
+
+```javascript
+let city = student.address.city;
+console.log(city); // Output: Springfield
+```
+
+4. **Accessing the `courseName` of the first course:**
+
+```javascript
+let firstCourseName = student.courses[0].courseName;
+console.log(firstCourseName); // Output: Introduction to Computer Science
+```
+
+5. **Accessing the `credits` of the second course:**
+
+```javascript
+let secondCourseCredits = student.courses[1].credits;
+console.log(secondCourseCredits); // Output: 3
+```
+
+6. **Accessing the `isEnrolled` status:**
+
+```javascript
+let enrollmentStatus = student.isEnrolled;
+console.log(enrollmentStatus); // Output: true
+```
+
+=== Advantages of JSON
+
+Here are the key advantages of using JSON:
+
+* **Lightweight and Simple**
+JSON has a minimal and clean syntax that is easy to write and read. It uses fewer characters, which makes it lightweight for data exchange.
+
+* **Human-Readable**
+JSON is easy to read and understand for humans, even without prior knowledge of the structure.
+
+* **Language-Independent**
+JSON is supported by most programming languages, making it a versatile format for data exchange between systems written in different languages.
+
+* **Easy to Parse**
+JSON can be quickly parsed and converted into objects in most programming languages using built-in functions or libraries.
+
+* **Structured Data Representation**
+JSON allows for nested objects and arrays, which makes it flexible to represent complex data structures.
+
+* **Widely Used in Web APIs**
+JSON is the standard format for data exchange in RESTful web services, enabling seamless communication between clients and servers.
+
+* **Efficient Data Transmission**
+Due to its lightweight nature, JSON reduces the size of the data being transmitted, leading to faster data transfer and better performance in web applications.
+
+These advantages make JSON a preferred format for data exchange in modern software applications, especially in web development and APIs.
+
+######
+
+=== JSON Parsing 1 - store.json
+
+Here are some simpler examples using JSON and the `json-path` library in Java.
+
+*JSON Structure*
+
+We’ll use the following simple JSON data for the examples:
+
+[source, json]
+----
+{
+  "store": {
+    "book": [
+      {
+        "title": "Book A",
+        "author": "Author 1",
+        "price": 9.99
+      },
+      {
+        "title": "Book B",
+        "author": "Author 2",
+        "price": 12.99
+      }
+    ],
+    "stationery": {
+      "item": "Pen",
+      "price": 1.5
+    }
+  }
+}
+----
+
+*Extracting a Simple Value*
+
+Suppose you want to extract the title of the first book.
+
+[source, java]
+----
+import com.jayway.jsonpath.JsonPath;
+
+public class SimpleJsonExample {
+    public static void main(String[] args) {
+        String json = "{ \"store\": { \"book\": [ { \"title\": \"Book A\", \"author\": \"Author 1\", \"price\": 9.99 }, { \"title\": \"Book B\", \"author\": \"Author 2\", \"price\": 12.99 } ], \"stationery\": { \"item\": \"Pen\", \"price\": 1.5 } } }";
+
+        // Extract the title of the first book
+        String firstBookTitle = JsonPath.parse(json).read("$.store.book[0].title");
+
+        System.out.println("First Book Title: " + firstBookTitle);
+    }
+}
+----
+
+**Output:**
+
+```
+First Book Title: Book A
+```
+
+*Extracting Multiple Values*
+
+You can extract all book titles from the JSON.
+
+[source, java]
+----
+import com.jayway.jsonpath.JsonPath;
+import java.util.List;
+
+public class SimpleJsonExample {
+    public static void main(String[] args) {
+        String json = "{ \"store\": { \"book\": [ { \"title\": \"Book A\", \"author\": \"Author 1\", \"price\": 9.99 }, { \"title\": \"Book B\", \"author\": \"Author 2\", \"price\": 12.99 } ], \"stationery\": { \"item\": \"Pen\", \"price\": 1.5 } } }";
+
+        // Extract all book titles
+        List<String> bookTitles = JsonPath.parse(json).read("$.store.book[*].title");
+
+        System.out.println("Book Titles: " + bookTitles);
+    }
+}
+----
+
+*Output:*
+
+```
+Book Titles: [Book A, Book B]
+```
+
+*Accessing Nested Values*
+
+Suppose you want to get the price of the pen.
+
+[source, java]
+----
+import com.jayway.jsonpath.JsonPath;
+
+public class SimpleJsonExample {
+    public static void main(String[] args) {
+        String json = "{ \"store\": { \"book\": [ { \"title\": \"Book A\", \"author\": \"Author 1\", \"price\": 9.99 }, { \"title\": \"Book B\", \"author\": \"Author 2\", \"price\": 12.99 } ], \"stationery\": { \"item\": \"Pen\", \"price\": 1.5 } } }";
+
+        // Extract the price of the pen
+        double penPrice = JsonPath.parse(json).read("$.store.stationery.price");
+
+        System.out.println("Pen Price: " + penPrice);
+    }
+}
+----
+
+**Output:**
+```
+Pen Price: 1.5
+```
+
+*Simple Filtering*
+
+Suppose you want to find the book with a price greater than 10.
+
+[source, java]
+----
+import com.jayway.jsonpath.JsonPath;
+import java.util.List;
+
+public class SimpleJsonExample {
+    public static void main(String[] args) {
+        String json = "{ \"store\": { \"book\": [ { \"title\": \"Book A\", \"author\": \"Author 1\", \"price\": 9.99 }, { \"title\": \"Book B\", \"author\": \"Author 2\", \"price\": 12.99 } ], \"stationery\": { \"item\": \"Pen\", \"price\": 1.5 } } }";
+
+        // Extract books with price greater than 10
+        List<Object> expensiveBooks = JsonPath.parse(json).read("$.store.book[?(@.price > 10)]");
+
+        System.out.println("Expensive Books: " + expensiveBooks);
+    }
+}
+----
+
+**Output:**
+```
+Expensive Books: [{"title":"Book B","author":"Author 2","price":12.99}]
+```
+
+
+=== JSON Paring 2 - book.json
+
+Here is the example of using JSONPath functions in Java, formatted as requested:
+
+[source, java]
+----
+import com.jayway.jsonpath.JsonPath;
+
+public class Main {
+    public static void main(String[] args) {
+        String json = """
+        {
+            "store": {
+                "book": [
+                    { "title": "Book A", "price": 9.99 },
+                    { "title": "Book B", "price": 12.99 },
+                    { "title": "Book C", "price": 7.99 }
+                ]
+            }
+        }
+        """;
+
+        // Get the count of books
+        int bookCount = JsonPath.parse(json).read("$.store.book.length()");
+        System.out.println("Number of Books: " + bookCount);
+
+        // Get the minimum book price
+        double minPrice = JsonPath.parse(json).read("$.store.book.min(@.price)");
+        System.out.println("Minimum Book Price: " + minPrice);
+
+        // Get the maximum book price
+        double maxPrice = JsonPath.parse(json).read("$.store.book.max(@.price)");
+        System.out.println("Maximum Book Price: " + maxPrice);
+    }
+}
+----
+
+*Explanation*
+
+In this example:
+
+* The `length()` function is used to determine the total number of books in the JSON array.
+* The `min()` function finds the minimum price among the books.
+* The `max()` function finds the maximum price among the books.
+
+The JSON structure contains a list of books, each with a `title` and `price`. The functions allow for extracting and analyzing specific data from the JSON content.
+
+---
+
+The JSONPath expression `$.store.book.min(@.price)` is used to find the minimum value of a specific field within a JSON array. Here’s a breakdown of the components of this expression:
+
+* `$.store.book` - This part of the expression selects the `book` array within the `store` object. The `$` symbol represents the root of the JSON data.
+
+* `.min(@.price)` - This function is applied to the array selected by the previous part of the expression. It calculates the minimum value of the specified field, which in this case is `price`.
+
+* `@.price` - The `@` symbol represents the current element in the array being processed. `.price` specifies that we are interested in the `price` field of each book in the array.
+
+So, `$.store.book.min(@.price)`:
+
+1. Selects the `book` array from the JSON data.
+2. Applies the `min()` function to find the smallest value of the `price` field within that array.
+
+In essence, this expression finds the lowest price among all books in the `book` array.
+
+
+Here’s the Java code using **JsonPath** to read and extract data from your new JSON structure:
+
+---
+
+=== Reading `student.json`
+
+```json
+{
+  "studentId": "S12345",
+  "firstName": "John",
+  "lastName": "Doe",
+  "age": 21,
+  "address": {
+    "street": "123 Elm Street",
+    "city": "Springfield",
+    "state": "IL",
+    "postalCode": "62704"
+  },
+  "courses": [
+    {
+      "courseId": "CSE101",
+      "courseName": "Introduction to Computer Science",
+      "credits": 4
+    },
+    {
+      "courseId": "MTH201",
+      "courseName": "Calculus I",
+      "credits": 3
+    }
+  ],
+  "isEnrolled": true
+}
+```
+
+---
+
+[source, java]
+----
+import com.jayway.jsonpath.JsonPath;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+public class StudentJsonPathReader {
+
+    public static void main(String[] args) {
+        try {
+            File jsonFile = new File("student.json");
+
+            // Read basic student info
+            String studentId = JsonPath.read(jsonFile, "$.studentId");
+            String firstName = JsonPath.read(jsonFile, "$.firstName");
+            String lastName = JsonPath.read(jsonFile, "$.lastName");
+            int age = JsonPath.read(jsonFile, "$.age");
+
+            // Read address details
+            String city = JsonPath.read(jsonFile, "$.address.city");
+            String state = JsonPath.read(jsonFile, "$.address.state");
+
+            // Read course names
+            List<String> courseNames = JsonPath.read(jsonFile, "$.courses[*].courseName");
+
+            // Read enrollment status
+            boolean isEnrolled = JsonPath.read(jsonFile, "$.isEnrolled");
+
+            // Print extracted values
+            System.out.println("Student ID: " + studentId);
+            System.out.println("Name: " + firstName + " " + lastName);
+            System.out.println("Age: " + age);
+            System.out.println("City: " + city + ", State: " + state);
+            System.out.println("Courses Enrolled: " + courseNames);
+            System.out.println("Enrolled: " + isEnrolled);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
+
+---
+
+*Output (when you run the program)*
+
+```
+Student ID: S12345
+Name: John Doe
+Age: 21
+City: Springfield, State: IL
+Courses Enrolled: [Introduction to Computer Science, Calculus I]
+Enrolled: true
+```
+
+---
+
+Let me know if you want to extract course credits, filter by course ID, or map it into a Java object using Jackson.
+
+---
+
+Sure! Here's a Java program that reads your JSON file and uses **JsonPath** to extract data like:
+
+* All book titles
+* All prices
+* Stationery item name
+
+We’ll use the `com.jayway.jsonpath` library.
+
+---
+
+##############################################
+
+=== Reading Store.json
+
+If you're using Maven, include the following in your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.jayway.jsonpath</groupId>
+    <artifactId>json-path</artifactId>
+    <version>2.8.0</version>
+</dependency>
+```
+
+---
+
+[source, java]
+----
+import com.jayway.jsonpath.JsonPath;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+public class JsonPathReader {
+
+    public static void main(String[] args) {
+        try {
+            // Read JSON file
+            File jsonFile = new File("store.json");
+
+            // Read all book titles
+            List<String> bookTitles = JsonPath.read(jsonFile, "$.store.book[*].title");
+            System.out.println("Book Titles: " + bookTitles);
+
+            // Read all prices
+            List<Double> prices = JsonPath.read(jsonFile, "$..price");
+            System.out.println("All Prices: " + prices);
+
+            // Read stationery item
+            String stationeryItem = JsonPath.read(jsonFile, "$.store.stationery.item");
+            System.out.println("Stationery Item: " + stationeryItem);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
+
+---
+
+*Sample `store.json`*
+
+Make sure this file is in your project root or update the file path in the code.
+
+```json
+{
+  "store": {
+    "book": [
+      {
+        "title": "Book A",
+        "author": "Author 1",
+        "price": 9.99
+      },
+      {
+        "title": "Book B",
+        "author": "Author 2",
+        "price": 12.99
+      }
+    ],
+    "stationery": {
+      "item": "Pen",
+      "price": 1.5
+    }
+  }
+}
+```
+
+---
+
+Let me know if you want the same with Gradle, or if you'd like to filter based on author/price.
+
+== Commands
+
+[source,commandline]
+----
+mvn archetype:generate -DgroupId=com.nc -DartifactId=json-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+----
+
+== Resources
+
+* https://github.com/json-path/JsonPath

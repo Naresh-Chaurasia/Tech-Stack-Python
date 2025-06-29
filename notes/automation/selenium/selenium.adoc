@@ -1,0 +1,172 @@
+
+= Selenium Notes
+:toc: right
+:toclevels:5
+:sectnums:
+
+== Selenium WebDriver
+
+- Java 17
+- Java Selenium (Starting with 4.6, it should happend automatically)
+
+image::webdriver.png[]
+
+== References
+
+- https://googlechromelabs.github.io/chrome-for-testing/#stable
+- /Users/nareshchaurasia/.cache/selenium/chromedriver
+- https://www.selenium.dev/documentation/webdriver/
+- https://www.browserstack.com/guide/architecture-of-selenium-webdriver
+- https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebDriver.html
+
+== WebElement
+
+In Selenium, every item you interact with on a webpage (like buttons, text boxes, links, etc.) is called a *WebElement*.
+
+To automate any interaction with a webpage, you first need to *locate* the element, then *perform an action* on it.
+
+*Common WebElement Methods*
+
+[cols="1,2,2", options="header"]
+|===
+| Method
+| Purpose
+| Example
+
+| `click()`
+| Clicks the element (like a button)
+| `loginButton.click();`
+
+| `sendKeys("text")`
+| Types text into a field
+| `usernameField.sendKeys("john");`
+
+| `getText()`
+| Gets visible text of element
+| `label.getText();`
+
+| `clear()`
+| Clears a text field
+| `searchBox.clear();`
+
+| `isDisplayed()`
+| Checks if element is visible
+| `element.isDisplayed();`
+
+| `isEnabled()`
+| Checks if element is enabled
+| `submit.isEnabled();`
+
+| `isSelected()`
+| Checks if checkbox/radio is selected
+| `checkbox.isSelected();`
+|===
+
+*How to Locate a WebElement*
+
+Before using any WebElement method, you must first *locate* the element using:
+
+* `By.id`
+* `By.name`
+* `By.className`
+* `By.tagName`
+* `By.linkText`
+* `By.partialLinkText`
+* `By.xpath`
+* `By.cssSelector`
+
+*Example: Login Form*
+
+Imagine a simple login form:
+
+[source, html]
+----
+<input type="text" id="username" name="user">
+<input type="password" id="password">
+<button id="loginBtn">Login</button>
+----
+
+*Java Selenium Code:*
+
+[source, java]
+----
+WebElement userField = driver.findElement(By.id("username"));
+WebElement passField = driver.findElement(By.id("password"));
+WebElement loginButton = driver.findElement(By.id("loginBtn"));
+
+userField.sendKeys("testuser");
+passField.sendKeys("password123");
+loginButton.click();
+----
+
+
+
+## Selenium Mini Project
+
+*login.html*
+
+**Assignment**: Automate login functionality
+
+**Assignment Instructions**:
+
+* Open the page in the browser
+* Enter username and password
+* Click the login button
+* Print "Login attempted" in console
+
+---
+
+*Page 2: `search.html`
+
+**Assignment**: Automate search input
+
+**Assignment Instructions**:
+
+* Enter a search term like "Selenium"
+* Click the search button
+* Print "Search clicked with term: Selenium"
+
+---
+
+### 🔹 Page 3: `registration.html`
+
+**Assignment**: Automate form filling
+
+
+**Assignment Instructions**:
+
+* Fill in the name, email, password
+* Select gender from dropdown
+* Click register
+* Print values filled in console
+
+---
+
+### 🔹 Page 4: `checkboxes.html`
+
+**Assignment**: Select multiple checkboxes
+
+
+**Assignment Instructions**:
+
+* Select Java and Selenium
+* Click submit
+* Print selected skills to console
+
+---
+
+### 🔹 Page 5: `radio-dropdown.html`
+
+**Assignment**: Work with radio buttons and dropdowns
+
+
+**Assignment Instructions**:
+
+* Select "Intermediate" radio option
+* Select "Python" from dropdown
+* Click submit
+* Print selected experience and language in console
+
+
+
+

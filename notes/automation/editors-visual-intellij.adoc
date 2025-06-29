@@ -1,0 +1,27 @@
+= Intellij / Visual Studio
+:toc: right
+:toclevels:5
+:sectnums:
+
+##############################################
+
+== Visual Studio Code
+
+* Make sure Java is Installed
+** *Register*: https://www.oracle.com/java/technologies/downloads/?er=221886
+** Download and Install Java
+
+---
+
+* Download Visual Studio Code and Install
+
+---
+
+image::img/vs-javaextension.png[]
+
+
+---
+
+image::../Awakening-The-Giant/img/A.png[]
+
+

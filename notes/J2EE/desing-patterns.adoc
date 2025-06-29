@@ -1,0 +1,422 @@
+= SOLID
+:toc: right
+:toclevels: 5
+:sectnums: 5
+
+
+== Singleton Pattern
+
+[source, java]
+----
+public class SimpleSingleton {
+
+    // Step 1: Create a private static instance of the class
+    private static final SimpleSingleton instance = new SimpleSingleton();
+
+    // Step 2: Make the constructor private so no other class can instantiate it
+    private SimpleSingleton() {
+        System.out.println("Singleton instance created");
+    }
+
+    // Step 3: Provide a public static method to get the instance
+    public static SimpleSingleton getInstance() {
+        return instance;
+    }
+
+    public void showMessage() {
+        System.out.println("Hello from Singleton!");
+    }
+
+    // Main method to test the Singleton
+    public static void main(String[] args) {
+        SimpleSingleton obj1 = SimpleSingleton.getInstance();
+        SimpleSingleton obj2 = SimpleSingleton.getInstance();
+
+        obj1.showMessage();
+
+        // Check if both references point to the same instance
+        System.out.println("Are both objects same? " + (obj1 == obj2));
+    }
+}
+----
+
+*Output*
+
+----
+Singleton instance created
+Hello from Singleton!
+Are both objects same? true
+----
+
+*Explanation*
+
+* Only one instance is created, no matter how many times `getInstance()` is called.
+* The constructor is private to prevent instantiation from outside.
+* `obj1` and `obj2` point to the same memory location, proving the singleton behavior.
+
+
+##########
+
+== Factory Method Pattern
+
+The *Factory Method Pattern* is a creational design pattern that provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created.
+
+*Purpose*
+
+* To delegate the object instantiation to subclasses.
+* Promotes loose coupling by eliminating the need to bind application-specific classes into the code.
+
+*Real-World Analogy*
+
+Think of a logistics company: depending on the transportation type (Truck, Ship), a different vehicle is created to deliver the product. The client code asks for a transport, not caring about which type it is.
+
+*Basic Example*
+
+We’ll create an interface `Product`, two concrete classes `Book` and `Pen`, and a `ProductFactory` class that returns the right object.
+
+[source, java]
+----
+// Step 1: Create a Product interface
+interface Product {
+    void use();
+}
+
+// Step 2: Concrete implementations of Product
+class Book implements Product {
+    public void use() {
+        System.out.println("You are reading a book.");
+    }
+}
+
+class Pen implements Product {
+    public void use() {
+        System.out.println("You are writing with a pen.");
+    }
+}
+
+// Step 3: Factory class to create products
+class ProductFactory {
+    public static Product getProduct(String type) {
+        if (type.equalsIgnoreCase("book")) {
+            return new Book();
+        } else if (type.equalsIgnoreCase("pen")) {
+            return new Pen();
+        } else {
+            throw new IllegalArgumentException("Unknown product type");
+        }
+    }
+}
+
+// Step 4: Client code
+public class FactoryPatternExample {
+    public static void main(String[] args) {
+        Product p1 = ProductFactory.getProduct("book");
+        p1.use();
+
+        Product p2 = ProductFactory.getProduct("pen");
+        p2.use();
+    }
+}
+----
+
+*Output*
+----
+You are reading a book.
+You are writing with a pen.
+----
+
+*Key Benefits*
+
+* Hides object creation logic from the client.
+* Makes the code more flexible and extensible.
+* Encourages programming to interfaces, not implementations.
+
+*Use Cases*
+
+* When the exact type of the object may vary depending on configuration or input.
+* When you want to isolate object creation logic in one place.
+
+##########
+
+== Strategy Design Pattern
+
+The *Strategy Pattern* is a behavioral design pattern that enables selecting an algorithm's behavior at runtime. It defines a family of algorithms, encapsulates each one, and makes them interchangeable.
+
+*Purpose*
+
+* To define a set of algorithms, encapsulate each one, and make them interchangeable without changing the client code.
+* Helps in adhering to the Open/Closed Principle (open for extension, closed for modification).
+
+*Real-World Analogy*
+
+Think of a navigation app (like Google Maps). Based on user preference, it can switch strategies to navigate by car, bike, or walking.
+
+*Basic Example*
+
+We’ll create a `PaymentStrategy` interface and provide multiple implementations like `CreditCardPayment` and `PayPalPayment`.
+
+[source, java]
+----
+// Step 1: Strategy Interface
+interface PaymentStrategy {
+    void pay(int amount);
+}
+
+// Step 2: Concrete Strategies
+class CreditCardPayment implements PaymentStrategy {
+    public void pay(int amount) {
+        System.out.println("Paid " + amount + " using Credit Card.");
+    }
+}
+
+class PayPalPayment implements PaymentStrategy {
+    public void pay(int amount) {
+        System.out.println("Paid " + amount + " using PayPal.");
+    }
+}
+
+// Step 3: Context class
+class ShoppingCart {
+    private PaymentStrategy paymentStrategy;
+
+    // Set strategy dynamically
+    public void setPaymentStrategy(PaymentStrategy strategy) {
+        this.paymentStrategy = strategy;
+    }
+
+    public void checkout(int amount) {
+        if (paymentStrategy == null) {
+            throw new IllegalStateException("Payment strategy not set.");
+        }
+        paymentStrategy.pay(amount);
+    }
+}
+
+// Step 4: Client code
+public class StrategyPatternExample {
+    public static void main(String[] args) {
+        ShoppingCart cart = new ShoppingCart();
+
+        // User chooses to pay using Credit Card
+        cart.setPaymentStrategy(new CreditCardPayment());
+        cart.checkout(500);
+
+        // User switches to PayPal
+        cart.setPaymentStrategy(new PayPalPayment());
+        cart.checkout(300);
+    }
+}
+----
+
+*Output*
+
+----
+Paid 500 using Credit Card.
+Paid 300 using PayPal.
+----
+
+*Benefits*
+
+* Allows the algorithm to vary independently from clients.
+* Promotes reusability of algorithms.
+* Clean separation of concerns.
+
+*Use Cases*
+
+* Payment systems (as shown)
+* Compression algorithms (ZIP, RAR, etc.)
+* Sorting strategies in collections
+* Logging frameworks (choose log level dynamically)
+
+##########
+
+== Decorator Design Pattern
+
+The *Decorator Pattern* is a structural design pattern that allows behavior to be added to an object dynamically without modifying the original class.
+
+*Purpose*
+
+* Add new functionality to objects at runtime.
+* Avoid subclass explosion by using composition instead of inheritance.
+
+*Real-World Analogy*
+
+Think of a plain coffee. You can decorate it with milk, sugar, or whipped cream without altering the original coffee class.
+
+*Basic Example*
+
+We’ll create a `Coffee` interface, a `SimpleCoffee` class, and decorators like `MilkDecorator` and `SugarDecorator`.
+
+[source, java]
+----
+// Step 1: Define the base interface
+interface Coffee {
+    String getDescription();
+}
+
+// Step 2: Create a concrete implementation
+class SimpleCoffee implements Coffee {
+    public String getDescription() {
+        return "Plain Coffee";
+    }
+}
+
+// Step 3: Create a decorator class that implements the same interface
+class MilkDecorator implements Coffee {
+    private Coffee coffee;
+
+    public MilkDecorator(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    public String getDescription() {
+        return coffee.getDescription() + " + Milk";
+    }
+}
+
+class SugarDecorator implements Coffee {
+    private Coffee coffee;
+
+    public SugarDecorator(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    public String getDescription() {
+        return coffee.getDescription() + " + Sugar";
+    }
+}
+
+// Step 4: Client code
+public class SimpleDecoratorExample {
+    public static void main(String[] args) {
+        Coffee coffee = new SimpleCoffee();
+        System.out.println(coffee.getDescription()); // Plain Coffee
+
+        coffee = new MilkDecorator(coffee);
+        System.out.println(coffee.getDescription()); // Plain Coffee + Milk
+
+        coffee = new SugarDecorator(coffee);
+        System.out.println(coffee.getDescription()); // Plain Coffee + Milk + Sugar
+    }
+}
+
+----
+
+
+*Use Cases*
+
+* GUI frameworks (e.g., adding borders, scrollbars to components)
+* File I/O streams (e.g., `BufferedInputStream`, `DataInputStream`)
+* Logging libraries (adding timestamp, context, etc.)
+
+##########
+
+== Observer Design Pattern
+
+The *Observer Pattern* is a behavioral design pattern where an object (subject) maintains a list of dependents (observers) and notifies them automatically of any state changes.
+
+*Purpose*
+
+* Used when changes in one object require changes in others.
+* Promotes loose coupling between the subject and the observers.
+
+*Real-World Analogy*
+
+A YouTube channel (subject) has subscribers (observers). When the channel uploads a video, all subscribers are notified.
+
+*Basic Example*
+
+We’ll create a `Subject` interface, a `ConcreteSubject`, and multiple `Observer` implementations.
+
+[source, java]
+----
+// Step 1: Observer Interface
+interface Observer {
+    void update(String message);
+}
+
+// Step 2: Subject Interface
+interface Subject {
+    void attach(Observer o);
+    void detach(Observer o);
+    void notifyObservers();
+}
+
+// Step 3: Concrete Subject
+class MessagePublisher implements Subject {
+    private List<Observer> observers = new ArrayList<>();
+    private String message;
+
+    public void attach(Observer o) {
+        observers.add(o);
+    }
+
+    public void detach(Observer o) {
+        observers.remove(o);
+    }
+
+    public void notifyObservers() {
+        for (Observer o : observers) {
+            o.update(message);
+        }
+    }
+
+    public void publishMessage(String msg) {
+        this.message = msg;
+        notifyObservers();
+    }
+}
+
+// Step 4: Concrete Observers
+class EmailSubscriber implements Observer {
+    public void update(String message) {
+        System.out.println("Email Subscriber received: " + message);
+    }
+}
+
+class SMSSubscriber implements Observer {
+    public void update(String message) {
+        System.out.println("SMS Subscriber received: " + message);
+    }
+}
+
+// Step 5: Client code
+public class ObserverPatternExample {
+    public static void main(String[] args) {
+        MessagePublisher publisher = new MessagePublisher();
+
+        Observer email = new EmailSubscriber();
+        Observer sms = new SMSSubscriber();
+
+        publisher.attach(email);
+        publisher.attach(sms);
+
+        publisher.publishMessage("New content available!");
+    }
+}
+----
+
+*Output*
+
+----
+Email Subscriber received: New content available!
+SMS Subscriber received: New content available!
+----
+
+*Benefits*
+
+* Promotes a one-to-many dependency between objects.
+* Loose coupling: Subjects and Observers are independent.
+* Easy to add new observers without changing the subject.
+
+*Use Cases*
+
+* Event handling systems (e.g., GUI components)
+* Notification services (email, SMS, push)
+* Real-time data feeds (e.g., stock price updates)
+
+
+
+
+
+

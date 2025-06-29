@@ -1,0 +1,178 @@
+= CSS Introductory Tutorial
+:toc: right
+:toclevels:5
+:sectnums:
+
+== Inline CSS
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<body>
+<p style="color: red;">This is red text using inline CSS.</p>
+</body>
+</html>
+----
+
+== Internal CSS
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      p {
+        color: blue;
+        font-size: 18px;
+      }
+    </style>
+</head>
+<body>
+<p>This is blue text using internal CSS.</p>
+</body>
+</html>
+----
+
+== External CSS
+
+*HTML File:*
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<p>This text is styled using external CSS.</p>
+</body>
+</html>
+----
+
+*styles.css:*
+
+[source, css]
+----
+p {
+color: green;
+font-weight: bold;
+}
+----
+
+== Text Styling
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      p {
+        font-family: Arial, sans-serif;
+        color: navy;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+<p>This paragraph is styled with text properties.</p>
+</body>
+</html>
+----
+
+== Background and Color
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      body {
+        background-color: #f0f0f0;
+      }
+      div {
+        background-color: white;
+        color: darkblue;
+        padding: 10px;
+      }
+    </style>
+</head>
+<body>
+<div>This box has a white background and dark blue text.</div>
+</body>
+</html>
+----
+
+== Flexbox Layout
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      .flex-container {
+        display: flex;
+        justify-content: space-around;
+      }
+      .box {
+        background-color: lightcoral;
+        padding: 20px;
+        color: white;
+        width: 100px;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+<div class="flex-container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+</div>
+</body>
+</html>
+----
+
+== CSS Selectors
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      p {
+        color: gray;
+      }
+      .highlight {
+        background-color: yellow;
+      }
+      #special {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    </style>
+</head>
+<body>
+<p>This is a regular paragraph.</p>
+<p class="highlight">This has a yellow background.</p>
+<p id="special">This has special styling using an ID selector.</p>
+</body>
+</html>
+----
+
+== CSS Comment
+
+[source, css]
+----
+/* This is a CSS comment explaining the rule below */
+p {
+color: teal;
+}
+----
+

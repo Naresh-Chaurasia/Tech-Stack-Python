@@ -1,0 +1,56 @@
+= Core Java - Open Book Exam
+:toc: right
+:toclevels:5
+:sectnums:
+
+
+== Java Coding Assignment
+
+== Instructions
+
+- Solve all the questions.
+- Use proper naming conventions and comments in your code.
+
+== Creating Object and Calling Methods with Arguments
+
+Create a Java class named `Student` with the following requirements:
+
+- Define two instance variables: `name` (String) and `age` (int).
+- Add a method `setDetails(String name, int age)` to set the student's name and age.
+- Add a `display()` method to print the student's details.
+- In the `main()` method, create an object of the `Student` class and call the methods using the object with appropriate arguments.
+
+== Using Static Methods and Variables
+
+Create a class called `Counter` that counts the number of objects created:
+
+- Use a static variable `count` to keep track of the object count.
+- In the constructor, increase the `count` variable by 1 each time an object is created.
+- Add a static method `displayCount()` to display the total number of objects.
+- In the `main()` method, create multiple objects and display the total count using the static method.
+
+== Method Chaining
+
+Create a `Person` class with the following:
+
+- Two instance variables: `name` (String) and `age` (int).
+- Add setter methods `setName()` and `setAge()` that return the current object to enable method chaining.
+- Add a `display()` method to print the details.
+- In the `main()` method, use method chaining to set the name and age, then call the `display()` method.
+
+== Collections (List, Set, and Map)
+
+Write a Java program to demonstrate the usage of `List`, `Set`, and `Map`:
+
+- Create a `List` to store names with duplicates.
+- Convert the `List` to a `Set` to remove duplicates.
+- Create a `Map` that associates ID (Integer) with names (String).
+- Print all the collections.
+
+== Arrays in Java
+
+Write a program that performs the following tasks:
+
+- Create an integer array of size 5 and initialize it with random values.
+- Find and print the sum of all the elements.
+- Find and print the largest value in the array.

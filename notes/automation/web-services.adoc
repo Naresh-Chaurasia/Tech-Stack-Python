@@ -1,0 +1,427 @@
+= Web Services
+:toc: right
+:toclevels:5
+:sectnums:
+
+##############################################
+
+== What are Web Services?
+
+An API (Application Programming Interface) is a set of rules and protocols that allows one software application to interact with another. It defines how requests should be made, what data formats to use, and how responses should be handled. APIs enable different systems, applications, or services to communicate and share data seamlessly. In simpler terms, an API is like a bridge that connects different software components, allowing them to work together efficiently.
+
+== Basics of REST API
+
+*Definition of REST*
+
+A REST API (Representational State Transfer Application Programming Interface) is a set of rules and conventions for building and interacting with web services. REST APIs use HTTP methods (such as GET, POST, PUT, DELETE) to perform operations on resources, which are typically represented in formats like JSON or XML. These APIs are stateless, meaning each request from a client to the server must contain all the information needed to understand and process the request. RESTful services are designed to be scalable, flexible, and easy to use, making them widely adopted in web development.
+
+*REST vs. SOAP*
+
+== REST vs. HTTP
+
+* REST is an architectural style for designing web services, while HTTP is a protocol used for communication on the web.
+* RESTful services are commonly implemented using HTTP, but REST can, in theory, be implemented over any protocol.
+* REST defines how resources should be accessed and manipulated, while HTTP provides the methods (GET, POST, etc.) to perform those operations.
+* In summary, REST is a set of principles for web services, and HTTP is the protocol that is often used to implement those principles.
+
+== HTTP Methods
+  - GET
+  - POST
+  - PUT
+  - DELETE
+  - PATCH
+
+=== GET
+
+The `GET` method is used to retrieve information from the server. It is a read-only operation and does not alter any data on the server.
+
+[source, java]
+----
+GET /users/123 HTTP/1.1
+Host: example.com
+----
+
+Response:
+[source, json]
+----
+{
+    "id": 123,
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+}
+----
+
+=== POST
+
+The `POST` method is used to create a new resource on the server. It sends data to the server to create a new entry.
+
+[source, java]
+----
+POST /users HTTP/1.1
+Host: example.com
+Content-Type: application/json
+
+{
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com"
+}
+----
+
+Response:
+[source, json]
+----
+{
+    "id": 124,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com"
+}
+----
+
+=== PUT
+
+The `PUT` method is used to update an existing resource on the server. It replaces the current representation of the resource with the new data.
+
+[source, java]
+----
+PUT /users/123 HTTP/1.1
+Host: example.com
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john.new@example.com"
+}
+----
+
+Response:
+[source, json]
+----
+{
+    "id": 123,
+    "name": "John Doe",
+    "email": "john.new@example.com"
+}
+----
+
+=== DELETE
+
+The `DELETE` method is used to delete a resource from the server.
+
+[source, java]
+----
+DELETE /users/123 HTTP/1.1
+Host: example.com
+----
+
+Response:
+[source, json]
+----
+{
+    "message": "User deleted successfully"
+}
+----
+
+=== PATCH
+
+The `PATCH` method is used to apply partial modifications to a resource. It updates only the specified fields of the resource.
+
+[source, java]
+----
+PATCH /users/123 HTTP/1.1
+Host: example.com
+Content-Type: application/json
+
+{
+    "email": "john.updated@example.com"
+}
+----
+
+Response:
+[source, json]
+----
+{
+    "id": 123,
+    "name": "John Doe",
+    "email": "john.updated@example.com"
+}
+----
+
+This overview provides a brief description and examples of how to use the common HTTP methods in RESTful web services to perform operations on resources.
+
+
+################################################################################
+
+
+- Status Codes
+  - 1xx (Informational)
+  - 2xx (Success)
+  - 3xx (Redirection)
+  - 4xx (Client Error)
+  - 5xx (Server Error)
+
+== Anatomy of API Request
+
+An API request is a call made by a client to a server, asking the server to perform a specific action or return data. The structure of an API request typically includes the following components:
+
+*1. Endpoint (URL)*:
+
+- The endpoint is the URL that specifies the location of the API resource.
+- It typically includes the base URL (domain) and the path to the specific resource.
+- Example: `https://api.example.com/users/123`.
+
+*2. HTTP Method (Verb)*:
+
+- This defines the action to be performed on the resource.
+- Common methods include:
+* GET: Retrieve data.
+* POST: Create a new resource.
+* PUT: Update an existing resource.
+* DELETE: Remove a resource.
+
+*3. Headers*:
+
+- Headers provide additional information about the request.
+- Common headers include:
+* `Content-Type`: Specifies the format of the request body (e.g., `application/json`).
+* `Authorization`: Includes credentials for authentication (e.g., tokens).
+
+*4. Query Parameters*:
+
+- Optional parameters appended to the URL to filter or modify the request.
+- Example: `https://api.example.com/users?status=active` (filters users by active status).
+
+*5. Request Body*:
+
+- Used in methods like POST and PUT to send data to the server.
+- The body usually contains the resource data in a format like JSON.
+- Example:
+```json
+{
+"name": "John Doe",
+"email": "john.doe@example.com"
+}
+```
+
+*6. Authentication/Authorization*:
+- Ensures that the client has the right permissions to access or modify the resource.
+- This is often handled via tokens, API keys, or OAuth.
+
+**Example API Request:**
+
+```http
+POST /users HTTP/1.1
+Host: api.example.com
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+}
+```
+
+In this example:
+- The endpoint is `/users`.
+- The method is `POST`.
+- The headers include `Content-Type` and `Authorization`.
+- The request body contains the data for the new user.
+
+This structured approach allows the client and server to communicate effectively and securely in a RESTful manner.
+
+
+
+
+== Consuming RESTful APIs
+
+- Tools for Testing APIs (Postman, curl)
+- Making Requests (with Python, JavaScript)
+- Parsing Responses
+
+== Error Handling
+- Client-Side Errors
+- Server-Side Errors
+- Error Messages and Codes
+
+
+== Practical Examples
+- Building a Simple REST API with Flask (Python)
+- Building a Simple REST API with Express (JavaScript/Node.js)
+
+##############################################
+
+== Path Parameter V/s Query Parameter
+
+=== Path Parameter
+
+- Path parameters are part of the URL path and are used to identify a specific resource.
+- They are typically used to specify the ID of a resource or some other key information.
+
+**Example:**
+
+- URL: `https://api.example.com/users/123`
+- Here, `123` is a path parameter that identifies a specific user.
+
+**Usage in an API request:**
+
+```http
+GET /users/123 HTTP/1.1
+Host: api.example.com
+```
+
+In this example, the client is requesting information about the user with ID `123`.
+
+=== Query Parameter
+
+- Query parameters are appended to the end of the URL after a `?` and are used to filter or modify the request.
+- They are typically used for optional parameters, such as search criteria, pagination, or sorting.
+
+**Example:**
+- URL: `https://api.example.com/users?status=active&sort=desc`
+- Here, `status=active` and `sort=desc` are query parameters.
+
+**Usage in an API request:**
+
+```http
+GET /users?status=active&sort=desc HTTP/1.1
+Host: api.example.com
+```
+
+In this example:
+- `status=active` filters the users to only return those who are active.
+- `sort=desc` sorts the results in descending order.
+
+*Summary:*
+
+- *Path parameters* are part of the URL path and are often used to uniquely identify a resource.
+- *Query parameters* are added to the URL after the `?` and are used to filter, modify, or refine the request.
+
+
+---
+
+
+######
+
+== Swagger
+
+**Swagger** is an open-source framework that helps in designing, documenting, and testing RESTful APIs. For someone involved in API testing, like yourself, Swagger is particularly useful because it provides a clear and interactive way to understand and test APIs.
+
+*How Swagger is Used in API Testing*
+
+1. **Understanding the API**: Swagger provides a detailed and interactive documentation of the API. It lists all the endpoints, the methods (GET, POST, PUT, DELETE, etc.), required parameters, request/response formats, and authentication details. This makes it easier for testers to understand how the API works.
+
+2. **Manual Testing with Swagger UI**: Swagger UI is a tool that allows you to manually test API endpoints directly from the browser. You can input parameters, headers, and body data, then see the response directly. This helps in quick verification and exploratory testing of the API.
+
+3. **Automating Tests**: Once you've understood the API, you can automate the testing using tools like **Rest Assured**. Swagger can be used to generate the API contracts, which can be referenced in your automation tests to ensure that the API behavior is consistent with the documentation.
+
+*Example*
+
+Imagine you're testing a simple API for managing books. The API has an endpoint `/books` that supports different HTTP methods. Swagger documentation for this API might look something like this:
+
+```yaml
+openapi: 3.0.0
+info:
+  title: Book API
+  version: 1.0.0
+paths:
+  /books:
+    get:
+      summary: Get a list of all books
+      responses:
+        '200':
+          description: A JSON array of book objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    author:
+                      type: string
+    post:
+      summary: Add a new book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+      responses:
+        '201':
+          description: Book created successfully
+```
+
+In this example:
+* The `GET /books` endpoint returns a list of books.
+* The `POST /books` endpoint allows you to add a new book.
+
+You can use **Swagger UI** to manually test these endpoints. For automation, you would use **Rest Assured** to write test cases that send HTTP requests to these endpoints and validate the responses against expected results. The Swagger specification serves as a blueprint for your test cases.
+
+*Using Swagger with Rest Assured*
+
+You can integrate Swagger with Rest Assured by importing the Swagger specification and generating tests based on the documented endpoints. This ensures that your automated tests are aligned with the API documentation, reducing the chances of missing any edge cases or changes in the API.
+
+######
+
+Here are 10 basic objective Java interview questions on REST API:
+
+== Question Set
+
+*What does REST stand for in the context of web services?*
+
+.Click Here For Answer
+[%collapsible]
+====
+*Representational State Transfer*
+====
+
+*Which HTTP method is typically used to retrieve a resource from a REST API?*
+
+.Click Here For Answer
+[%collapsible]
+====
+*GET*
+====
+
+
+*Which of the following is NOT an HTTP method used in REST APIs?*
+*A) POST*
+*B) GET*
+*C) INSERT*
+*D) DELETE*
+
+.Click Here For Answer
+[%collapsible]
+====
+*C) INSERT*
+====
+
+*What is the status code returned by a REST API when a resource is successfully created?*
+
+.Click Here For Answer
+[%collapsible]
+====
+*201 Created*
+====
+
+*Which of the following status codes indicates that a requested resource was not found?*
+*A) 200*
+*B) 404*
+*C) 500*
+*D) 403*
+
+.Click Here For Answer
+[%collapsible]
+====
+*B) 404*
+====
+

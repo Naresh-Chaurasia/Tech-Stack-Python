@@ -1,0 +1,147 @@
+= Python Demo Class Plan
+Naresh Chaurasia
+:doctype: article
+:toc: right
+:icons: font
+:source-highlighter: coderay
+:sectnums:
+
+
+=== Refences
+
+* *Course Details*
+** https://naresh-chaurasia.github.io/connect2naresh/python/python-basics/
+
+
+=== What is Python?
+
+* https://naresh-chaurasia.github.io/connect2naresh/python/
+** High-level, interpreted language.
+** Easy to learn and read.
+** Used by Google, Netflix, NASA, Facebook, etc.
+
+---
+
+* Applications:
+** Web development
+** Data science
+** Machine learning
+** Automation
+** Game development
+
+=== Hello World & Basic Syntax
+
+[source, python]
+----
+print("Hello, Python World!")
+----
+
+* No need for semicolons, curly braces, or class declarations to start.
+
+=== Variables and Data Types
+
+[source, python]
+----
+name = "Alice"
+age = 20
+is_student = True
+print(name, age, is_student)
+----
+
+* Python is dynamically typed.
+* Easy variable declarations.
+
+=== Taking User Input
+
+[source, python]
+----
+user_name = input("Enter your name: ")
+print("Hello", user_name)
+----
+
+* Introduces interactivity.
+
+=== Control Structures: if-else and loops
+
+==== if-else
+
+[source, python]
+----
+marks = int(input("Enter your marks: "))
+if marks >= 50:
+    print("Pass")
+else:
+    print("Fail")
+----
+
+==== for loop
+
+[source, python]
+----
+for i in range(5):
+    print("Welcome", i)
+----
+
+==== while loop
+
+[source, python]
+----
+i = 1
+while i <= 3:
+    print("Count:", i)
+    i += 1
+----
+
+=== Simple Function
+
+[source, python]
+----
+def greet(name):
+    return "Hello " + name
+
+print(greet("Naresh"))
+----
+
+* Explain reusability and modular code.
+
+=== Mini Project Demo: Simple Calculator
+
+[source, python]
+----
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+print("Add")
+print("Subtract")
+choice = input("Choose (1 or 2): ")
+x = int(input("Enter first number: "))
+y = int(input("Enter second number: "))
+
+if choice == "1":
+    print("Result:", add(x, y))
+else:
+    print("Result:", subtract(x, y))
+----
+
+* Makes them feel they have built a real-world app.
+
+=== Class Wrap-Up
+
+* Topics to be covered in upcoming classes:
+** Lists, Tuples, Dictionaries
+** Functions and Modules
+** File Handling
+** Object-Oriented Programming
+** Projects: Web scraping, mini games, automation scripts
+
+* Encourage questions.
+* Invite students to try this fun one-liner:
+
+[source, python]
+----
+print("Even" if int(input("Enter a number: ")) % 2 == 0 else "Odd")
+----
+
